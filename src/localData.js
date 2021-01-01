@@ -11,7 +11,7 @@ import nikkor2450 from "./assets/images/nikkor24-50.jpg";
 import nikkor2470 from "./assets/images/nikkor24-70.jpg";
 import sigma2470 from "./assets/images/sigma24-70.jpg";
 import sigma35 from "./assets/images/sigma35.jpg";
-import canon470ex from "./assets/images/canon470ex.jpg";
+import canonex from "./assets/images/canon470ex.jpg";
 import nissin from "./assets/images/nissin.jpg";
 import sb900 from "./assets/images/sb900.jpg";
 
@@ -176,7 +176,7 @@ export const localData = [
     freeDelivery: true,
     productDescripion:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
-    productImage: canon470ex,
+    productImage: canonex,
   },
   {
     productId: 15,
@@ -190,7 +190,7 @@ export const localData = [
     productImage: nissin,
   },
   {
-    productId: 15,
+    productId: 16,
     productName: "Nikon sb900",
     productPrice: 1665,
     productQuantity: 1,
