@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { localData } from "../localData";
 
 const App = () => {
   const [products, setProducts] = useState([]);
+
+  // useEffect(() => {
+  //   setProducts([...localData]);
+  // }, []);
+
+  // const jsonData = JSON.stringify(localData);
+
   useEffect(() => {
-    setProducts([...localData]);
+    axios
+      .get(`${process.env.REACT_APP_FIREBASE_API}`)
+      .then((data) => setProducts(data))
+      .catch((error) => console.log(error));
   }, []);
 
   return (
     <div className="App">
-      <ul>
+      {/* <ul>
         {products.map((product) => {
           const { productId, productName, productImage } = product;
           return (
@@ -23,7 +34,7 @@ const App = () => {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
     </div>
   );
 };
