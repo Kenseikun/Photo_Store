@@ -14,16 +14,17 @@ const ProductsWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  overflow: hidden;
 
   &::before {
     position: absolute;
-    bottom: 0;
+    bottom: -20%;
     left: 0;
-    border-radius: 30% 55% 40% 0%;
+    border-radius: 40% 55% 40% 0%;
 
     content: "";
     width: 98%;
-    height: 80%;
+    height: 100%;
     background-color: ${({ beforeColor }) => beforeColor};
     z-index: 1;
   }
