@@ -2,11 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Root from "./Root/Root";
 import GlobalStyle from "./GlobalStyles/GlobalStyle";
+import { ThemeProvider } from "styled-components";
+import { mainTheme } from "./GlobalStyles/theme/mainTheme";
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <Root />
+    <ThemeProvider theme={mainTheme}>
+      <GlobalStyle />
+      <Root />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

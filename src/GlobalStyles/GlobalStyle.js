@@ -7,10 +7,14 @@ const GlobalStyle = createGlobalStyle`
     box-sizing:border-box;
     }
 
+    body{
+        font-family: ${({ theme }) => theme.fontFamily.main};
+    }
+
     button
     {
         cursor: pointer
-        }
+ }
 `;
 
 export default GlobalStyle;
