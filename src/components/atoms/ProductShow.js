@@ -5,7 +5,7 @@ import { mainTheme } from "../../GlobalStyles/theme/mainTheme";
 
 const ProductsWrapper = styled.div`
   position: relative;
-  width: 300px;
+  width: 350px;
   height: 200px;
   /* background-color: ${({ bgColor }) => bgColor}; */
   background-color: transparent;
@@ -19,7 +19,8 @@ const ProductsWrapper = styled.div`
     position: absolute;
     bottom: 0;
     left: 0;
-    border-radius: 30% 90% 40% 0%;
+    border-radius: 30% 55% 40% 0%;
+
     content: "";
     width: 98%;
     height: 80%;
