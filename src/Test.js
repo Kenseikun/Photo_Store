@@ -12,6 +12,7 @@ const Test = () => {
         img={img}
         bgColor={mainTheme.colors.violet}
         beforeColor={mainTheme.colors.blue}
+        inBasket
       ></ProductShow>
     </div>
   );

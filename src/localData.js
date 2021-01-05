@@ -25,7 +25,7 @@ export const localData = [
     productQuantity: 1,
     productCategory: "cameras",
     freeDelivery: true,
-    productDescripion:
+    productDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
     productImage: canon60d,
   },
@@ -36,7 +36,7 @@ export const localData = [
     productQuantity: 1,
     productCategory: "cameras",
     freeDelivery: true,
-    productDescripion:
+    productDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
     productImage: canonFT,
   },
@@ -47,7 +47,7 @@ export const localData = [
     productQuantity: 1,
     productCategory: "cameras",
     freeDelivery: true,
-    productDescripion:
+    productDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
     productImage: nikonF3,
   },
@@ -58,7 +58,7 @@ export const localData = [
     productQuantity: 1,
     productCategory: "cameras",
     freeDelivery: true,
-    productDescripion:
+    productDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
     productImage: nikonF4,
   },
@@ -69,7 +69,7 @@ export const localData = [
     productQuantity: 1,
     productCategory: "cameras",
     freeDelivery: true,
-    productDescripion:
+    productDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
     productImage: sonyA7,
   },
@@ -83,7 +83,7 @@ export const localData = [
     productQuantity: 1,
     productCategory: "lenses",
     freeDelivery: true,
-    productDescripion:
+    productDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
     productImage: canon18135,
   },
@@ -94,7 +94,7 @@ export const localData = [
     productQuantity: 1,
     productCategory: "lenses",
     freeDelivery: true,
-    productDescripion:
+    productDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
     productImage: canon24,
   },
@@ -105,7 +105,7 @@ export const localData = [
     productQuantity: 1,
     productCategory: "lenses",
     freeDelivery: true,
-    productDescripion:
+    productDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
     productImage: canon28,
   },
@@ -116,7 +116,7 @@ export const localData = [
     productQuantity: 1,
     productCategory: "lenses",
     freeDelivery: true,
-    productDescripion:
+    productDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
     productImage: nikkor24,
   },
@@ -127,7 +127,7 @@ export const localData = [
     productQuantity: 1,
     productCategory: "lenses",
     freeDelivery: true,
-    productDescripion:
+    productDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
     productImage: nikkor2450,
   },
@@ -138,7 +138,7 @@ export const localData = [
     productQuantity: 1,
     productCategory: "lenses",
     freeDelivery: true,
-    productDescripion:
+    productDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
     productImage: nikkor2470,
   },
@@ -149,7 +149,7 @@ export const localData = [
     productQuantity: 1,
     productCategory: "lenses",
     freeDelivery: true,
-    productDescripion:
+    productDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
     productImage: sigma2470,
   },
@@ -160,7 +160,7 @@ export const localData = [
     productQuantity: 1,
     productCategory: "lenses",
     freeDelivery: true,
-    productDescripion:
+    productDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
     productImage: sigma35,
   },
@@ -174,7 +174,7 @@ export const localData = [
     productQuantity: 1,
     productCategory: "speedlights",
     freeDelivery: true,
-    productDescripion:
+    productDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
     productImage: canonex,
   },
@@ -185,7 +185,7 @@ export const localData = [
     productQuantity: 1,
     productCategory: "speedlights",
     freeDelivery: true,
-    productDescripion:
+    productDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
     productImage: nissin,
   },
@@ -196,7 +196,7 @@ export const localData = [
     productQuantity: 1,
     productCategory: "speedlights",
     freeDelivery: true,
-    productDescripion:
+    productDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
     productImage: sb900,
   },

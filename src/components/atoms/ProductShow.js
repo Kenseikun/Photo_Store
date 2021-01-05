@@ -5,7 +5,9 @@ import styled, { css } from "styled-components";
 
 const ProductsWrapper = styled.div`
   position: relative;
-  width: 350px;
+  /* width: 350px; */
+  width: ${({ isInBasket }) => (isInBasket ? "500px" : "350px")};
+
   height: 200px;
 
   /* background-color: ${({ bgColor }) => bgColor}; */
@@ -27,7 +29,15 @@ const ProductsWrapper = styled.div`
     content: "";
     width: 98%;
     height: 100%;
-    background-color: red;
+    /* background-color: red; */
+
+    background-color: ${({ type, theme }) =>
+      type === "cameras"
+        ? theme.colors.red
+        : type === "lenses"
+        ? theme.colors.yellow
+        : theme.colors.blue};
+
     z-index: 1;
   }
 `;
@@ -37,9 +47,9 @@ const ProductImage = styled.img`
   z-index: 2;
 `;
 
-const ProductShow = ({ color, img }) => {
+const ProductShow = ({ type, img, inBasket }) => {
   return (
-    <ProductsWrapper color={color}>
+    <ProductsWrapper type={type} isInBasket={inBasket}>
       <ProductImage src={img}></ProductImage>
     </ProductsWrapper>
   );
