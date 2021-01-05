@@ -114,7 +114,7 @@ export const localData = [
     productName: "Nikkor 24mm 1.8",
     productPrice: 4350,
     productQuantity: 1,
-    productCategory: "cameras",
+    productCategory: "lenses",
     freeDelivery: true,
     productDescripion:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
@@ -125,7 +125,7 @@ export const localData = [
     productName: "Nikkor 24-50mm 2.8",
     productPrice: 3350,
     productQuantity: 1,
-    productCategory: "cameras",
+    productCategory: "lenses",
     freeDelivery: true,
     productDescripion:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
@@ -136,7 +136,7 @@ export const localData = [
     productName: "Nikkor 24-70mm 2.8",
     productPrice: 5700,
     productQuantity: 1,
-    productCategory: "cameras",
+    productCategory: "lenses",
     freeDelivery: true,
     productDescripion:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
@@ -147,7 +147,7 @@ export const localData = [
     productName: "Sigma 24-70mm 2.8",
     productPrice: 4780,
     productQuantity: 1,
-    productCategory: "cameras",
+    productCategory: "lenses",
     freeDelivery: true,
     productDescripion:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",
@@ -158,7 +158,7 @@ export const localData = [
     productName: "Sigma 35mm 1.4",
     productPrice: 6730,
     productQuantity: 1,
-    productCategory: "cameras",
+    productCategory: "lenses",
     freeDelivery: true,
     productDescripion:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos fuga labore repudiandae voluptatem maiores cupiditate provident ullam expedita culpa iste adipisci assumenda saepe exercitationem, perspiciatis tenetur, sunt necessitatibus, voluptates alias?",

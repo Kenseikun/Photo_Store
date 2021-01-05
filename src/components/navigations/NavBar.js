@@ -1,7 +1,11 @@
 import React from "react";
 import Logo from "../atoms/Logo";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { routes } from "../../routes";
+
+const activeNavLinkStyle = {
+  border: "1px solid red",
+};
 
 const NavBar = () => {
   return (
@@ -12,13 +16,19 @@ const NavBar = () => {
 
       <ul>
         <li>
-          <Link to={routes.about}>Why us?</Link>
+          <NavLink to={routes.about} activeStyle={activeNavLinkStyle}>
+            Why us?
+          </NavLink>
         </li>
         <li>
-          <Link to={routes.products}>Products</Link>
+          <NavLink to={routes.products} activeStyle={activeNavLinkStyle}>
+            Products
+          </NavLink>
         </li>
         <li>
-          <Link to={routes.contact}>Contact</Link>
+          <NavLink to={routes.contact} activeStyle={activeNavLinkStyle}>
+            Contact
+          </NavLink>
         </li>
       </ul>
     </nav>

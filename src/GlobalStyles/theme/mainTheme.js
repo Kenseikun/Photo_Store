@@ -1,7 +1,7 @@
 export const mainTheme = {
   fontFamily: {
-    main: `'Oswald', sans-serif`,
-    extra: `'Raleway', sans-serif`,
+    main: `'Raleway', sans-serif`,
+    extra: `'Oswald', sans-serif`,
   },
 
   gradientColors: {

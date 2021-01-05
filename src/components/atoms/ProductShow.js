@@ -1,13 +1,13 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { mainTheme } from "../../GlobalStyles/theme/mainTheme";
-// import img from "../../assets/images/canon24.jpg";
 
 const ProductsWrapper = styled.div`
   position: relative;
   width: 350px;
   height: 200px;
+  
   /* background-color: ${({ bgColor }) => bgColor}; */
+  
   background-color: transparent;
   z-index: 0;
 
@@ -25,7 +25,7 @@ const ProductsWrapper = styled.div`
     content: "";
     width: 98%;
     height: 100%;
-    background-color: ${({ beforeColor }) => beforeColor};
+    background-color: ${({cameras, lenses, speedlights, theme}) => (cameras ? theme.colors.red : lenses ? theme.colors.yellow : speedlights ? theme.colors.blue)};
     z-index: 1;
   }
 `;
@@ -35,9 +35,9 @@ const ProductImage = styled.img`
   z-index: 2;
 `;
 
-const ProductShow = ({ img, beforeColor, bgColor }) => {
+const ProductShow = ({ color, img }) => {
   return (
-    <ProductsWrapper beforeColor={beforeColor} bgColor={bgColor}>
+    <ProductsWrapper {color}>
       <ProductImage src={img}></ProductImage>
     </ProductsWrapper>
   );
