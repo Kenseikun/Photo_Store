@@ -4,7 +4,7 @@ import ProductShow from "./atoms/ProductShow";
 
 const ProductsList = () => {
   const context = useContext(RootContext);
-  const { products, productCategory, productImage } = context;
+  const { products } = context;
 
   return (
     <ul>
@@ -12,7 +12,10 @@ const ProductsList = () => {
         return (
           <li>
             <p>{product.productName}</p>
-            <ProductShow color={productCategory} img={productImage} />
+            <ProductShow
+              color={product.productCategory}
+              img={product.productImage}
+            />
           </li>
         );
       })}

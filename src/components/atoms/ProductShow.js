@@ -1,13 +1,15 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
+/* background-color: ${({cameras, lenses, speedlights, theme}) => (cameras ? theme.colors.red : lenses ? theme.colors.yellow : speedlights ? theme.colors.blue)}; */
+
 const ProductsWrapper = styled.div`
   position: relative;
   width: 350px;
   height: 200px;
-  
+
   /* background-color: ${({ bgColor }) => bgColor}; */
-  
+
   background-color: transparent;
   z-index: 0;
 
@@ -25,7 +27,7 @@ const ProductsWrapper = styled.div`
     content: "";
     width: 98%;
     height: 100%;
-    background-color: ${({cameras, lenses, speedlights, theme}) => (cameras ? theme.colors.red : lenses ? theme.colors.yellow : speedlights ? theme.colors.blue)};
+    background-color: red;
     z-index: 1;
   }
 `;
@@ -37,7 +39,7 @@ const ProductImage = styled.img`
 
 const ProductShow = ({ color, img }) => {
   return (
-    <ProductsWrapper {color}>
+    <ProductsWrapper color={color}>
       <ProductImage src={img}></ProductImage>
     </ProductsWrapper>
   );
