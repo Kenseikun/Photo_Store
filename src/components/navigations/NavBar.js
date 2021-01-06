@@ -8,22 +8,31 @@ import Button from "../atoms/Button";
 import RootContext from "../../context";
 
 const activeNavLinkStyle = {
-  borderBottom: "1px solid red",
+  borderBottom: `2px solid #ac003e`,
 };
 
 const DisplayNav = styled.nav`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 `;
 
 const DisplayUl = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 40px;
   list-style: none;
+`;
+
+const DisplayLi = styled.li`
+  font-size: 20px;
+  font-weight: 500;
+
+  &:hover {
+    opacity: 0.6;
+  }
 `;
 
 const NavBar = () => {
@@ -34,28 +43,32 @@ const NavBar = () => {
       <Link to={routes.home}>
         <Logo />
       </Link>
-
       <DisplayUl>
-        <li>
+        <DisplayLi>
+          <NavLink to={routes.home} activeStyle={activeNavLinkStyle}>
+            Home
+          </NavLink>
+        </DisplayLi>
+        <DisplayLi>
           <NavLink to={routes.about} activeStyle={activeNavLinkStyle}>
             Why us?
           </NavLink>
-        </li>
-        <li>
+        </DisplayLi>
+        <DisplayLi>
           <NavLink to={routes.products} activeStyle={activeNavLinkStyle}>
             Products
           </NavLink>
-        </li>
-        <li>
+        </DisplayLi>
+        <DisplayLi>
           <NavLink to={routes.contact} activeStyle={activeNavLinkStyle}>
             Contact
           </NavLink>
-        </li>
-        <li>
+        </DisplayLi>
+        <DisplayLi>
           <Button icon={cartIcon} cartBtn onClickFn={handleCartOpen}>
             1
           </Button>
-        </li>
+        </DisplayLi>
       </DisplayUl>
     </DisplayNav>
   );

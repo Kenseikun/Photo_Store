@@ -1,12 +1,10 @@
 import React from "react";
-import SocialMedias from "../components/atoms/SocialMedias";
-import DisplayHome from "../components/molecules/DisplayHome";
+import HomeConnected from "../components/organisms/HomeConnected";
 
 const Home = () => {
   return (
     <div>
-      <h2>Home</h2>
-      <SocialMedias />
+      <HomeConnected />
     </div>
   );
 };

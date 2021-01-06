@@ -29,7 +29,7 @@ const Root = () => {
       <RootContext.Provider
         value={{ products, isCartOpen, handleCartOpen, handleCartClose }}
       >
-        <Test />
+        {/* <Test /> */}
         <BrowserRouter>
           <MainTemplate>
             <Switch>

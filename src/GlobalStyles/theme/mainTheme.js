@@ -8,7 +8,6 @@ export const mainTheme = {
     blue: "#052a66",
     violet: "#391f49",
     dark: "#040d21",
-    // background: "rgb(5,42,102)",
     background:
       "linear-gradient(140deg, rgba(5,42,102,1) 0%, rgba(57,31,73,1) 100%)",
   },

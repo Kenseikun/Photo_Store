@@ -6,21 +6,15 @@ import instagram from "../../assets/icons/instagram.png";
 import twitter from "../../assets/icons/twitter.png";
 
 const DisplayIconsWrapper = styled.div`
-  border: 1px solid white;
-  position: relative;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: flex-end;
   overflow: hidden;
-  height: 30px;
-  width: 100vw;
+  height: 25px;
   background-color: ${({ theme }) => theme.colors.violet};
   background-color: transparent;
+  margin: 20px 0px;
 `;
 
 const Icons = styled.img`
-  height: 60px;
+  height: 50px;
   margin: 0 5px;
 
   transition: all 0.4s ease-in-out;

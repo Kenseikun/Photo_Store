@@ -28,11 +28,29 @@ const StyledButton = styled.button`
       width: 40px;
       height: 40px;
     `}
+
+  ${({ inHome }) =>
+    inHome &&
+    css`
+      font-size: 1.5em;
+      font-weight: 100;
+      height: 80px;
+      width: 250px;
+      &:hover {
+        opacity: 0.8;
+      }
+    `}
 `;
 
-const Button = ({ type, children, cartBtn, icon, onClickFn }) => {
+const Button = ({ type, children, cartBtn, icon, onClickFn, inHome }) => {
   return (
-    <StyledButton cartBtn={cartBtn} icon={icon} type={type} onClick={onClickFn}>
+    <StyledButton
+      cartBtn={cartBtn}
+      icon={icon}
+      type={type}
+      onClick={onClickFn}
+      inHome={inHome}
+    >
       {children}
     </StyledButton>
   );
