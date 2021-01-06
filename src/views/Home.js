@@ -1,5 +1,6 @@
 import React from "react";
-import SocialMedias from "../components/SocialMedias";
+import SocialMedias from "../components/atoms/SocialMedias";
+import DisplayHome from "../components/molecules/DisplayHome";
 
 const Home = () => {
   return (

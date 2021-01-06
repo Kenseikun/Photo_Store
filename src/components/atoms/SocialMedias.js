@@ -1,18 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import fb from "../assets/icons/fb.png";
-import instagram from "../assets/icons/instagram.png";
-import twitter from "../assets/icons/twitter.png";
+import fb from "../../assets/icons/fb.png";
+import instagram from "../../assets/icons/instagram.png";
+import twitter from "../../assets/icons/twitter.png";
 
 const DisplayIconsWrapper = styled.div`
+  border: 1px solid white;
+  position: relative;
+  bottom: 0;
+  left: 0;
   display: flex;
   justify-content: flex-end;
   overflow: hidden;
   height: 30px;
   width: 100vw;
   background-color: ${({ theme }) => theme.colors.violet};
-  /* background-color: transparent; */
+  background-color: transparent;
 `;
 
 const Icons = styled.img`

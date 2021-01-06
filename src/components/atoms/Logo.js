@@ -1,14 +1,12 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-// import { mainTheme } from "../../GlobalStyles/theme/mainTheme";
-
 const StyledLogo = styled.div`
   position: relative;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.colors.violet};
+  background-color: #fff;
 
   &::before {
     content: "";
@@ -18,7 +16,7 @@ const StyledLogo = styled.div`
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.colors.violet};
   }
 `;
 

@@ -7,7 +7,9 @@ const StyledButton = styled.button`
       ? theme.colors.red
       : type === "lenses"
       ? theme.colors.yellow
-      : theme.colors.blue};
+      : type === "speedlights"
+      ? theme.colors.blue
+      : theme.colors.violet};
   padding: 5px;
   border: none;
   outline: none;

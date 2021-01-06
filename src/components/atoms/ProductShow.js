@@ -8,7 +8,7 @@ const ProductsWrapper = styled.div`
   /* width: 350px; */
   width: ${({ isInBasket }) => (isInBasket ? "500px" : "350px")};
 
-  height: 200px;
+  height: 120px;
 
   /* background-color: ${({ bgColor }) => bgColor}; */
 

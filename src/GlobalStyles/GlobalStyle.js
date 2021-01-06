@@ -8,9 +8,11 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body{
-        height: 100vh;
-        font-family: ${({ theme }) => theme.fontFamily.main};
-        /* background-color: ${({ theme }) => theme.gradientColors.blue} */
+       color: white;  
+       min-height: 100vh;  
+       font-family: ${({ theme }) => theme.fontFamily.main};
+       background: ${({ theme }) => theme.gradientColors.background};
+       background-repeat: no-repeat;
     }
 
     button
