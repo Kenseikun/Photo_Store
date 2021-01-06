@@ -10,6 +10,7 @@ const ProductsList = () => {
     <ul>
       {products.map((product) => {
         const {
+          productId,
           productName,
           productPrice,
           productDescription,
@@ -17,7 +18,7 @@ const ProductsList = () => {
           productImage,
         } = product;
         return (
-          <li>
+          <li key={productId}>
             {/* <p>{product.productName}</p> */}
             {/* <ProductShow
               type={product.productCategory}

@@ -5,10 +5,6 @@ import fb from "../assets/icons/fb.png";
 import instagram from "../assets/icons/instagram.png";
 import twitter from "../assets/icons/twitter.png";
 
-// const activeIconStyle = {
-//   transform: "translateY(-50%)",
-// };
-
 const DisplayIconsWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -16,6 +12,7 @@ const DisplayIconsWrapper = styled.div`
   height: 30px;
   width: 100vw;
   background-color: ${({ theme }) => theme.colors.violet};
+  /* background-color: transparent; */
 `;
 
 const Icons = styled.img`
@@ -34,10 +31,10 @@ const SocialMedias = () => {
       <NavLink to="/">
         <Icons src={fb} att="social media icon"></Icons>
       </NavLink>
-      <NavLink to="/">
+      <NavLink to="/a">
         <Icons src={instagram} att="social media icon"></Icons>
       </NavLink>
-      <NavLink to="/">
+      <NavLink to="">
         <Icons src={twitter} att="social media icon"></Icons>
       </NavLink>
     </DisplayIconsWrapper>
