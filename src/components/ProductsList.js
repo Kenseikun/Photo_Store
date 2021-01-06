@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import RootContext from "../context";
-import Button from "./atoms/Button";
-import ProductShow from "./atoms/ProductShow";
 import DisplayProduct from "./molecules/DisplayProduct";
 
 const ProductsList = () => {

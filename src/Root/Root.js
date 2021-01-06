@@ -11,6 +11,7 @@ import { routes } from "../routes";
 
 import Test from "../Test";
 import MainTemplate from "../templates/MainTemplate";
+import SocialMedias from "../components/SocialMedias";
 
 const Root = () => {
   const [initialProducts, setInitialProducts] = useState([...localData]);
@@ -28,6 +29,7 @@ const Root = () => {
               <Route path={routes.products} component={Products} />
             </Switch>
           </MainTemplate>
+          <SocialMedias />
         </BrowserRouter>
       </RootContext.Provider>
     </>
