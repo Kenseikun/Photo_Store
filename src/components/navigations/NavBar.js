@@ -1,20 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
 import Logo from "../atoms/Logo";
 import { Link, NavLink } from "react-router-dom";
 import { routes } from "../../routes";
+import styled from "styled-components";
+import cartIcon from "../../assets/icons/shopping-bag.svg";
+import Button from "../atoms/Button";
+import RootContext from "../../context";
 
 const activeNavLinkStyle = {
-  border: "1px solid red",
+  borderBottom: "1px solid red",
 };
 
+const DisplayNav = styled.nav`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+`;
+
+const DisplayUl = styled.ul`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+`;
+
 const NavBar = () => {
+  const context = useContext(RootContext);
+  const { handleCartOpen } = context;
   return (
-    <nav>
+    <DisplayNav>
       <Link to={routes.home}>
         <Logo />
       </Link>
 
-      <ul>
+      <DisplayUl>
         <li>
           <NavLink to={routes.about} activeStyle={activeNavLinkStyle}>
             Why us?
@@ -30,8 +51,13 @@ const NavBar = () => {
             Contact
           </NavLink>
         </li>
-      </ul>
-    </nav>
+        <li>
+          <Button icon={cartIcon} cartBtn onClickFn={handleCartOpen}>
+            1
+          </Button>
+        </li>
+      </DisplayUl>
+    </DisplayNav>
   );
 };
 

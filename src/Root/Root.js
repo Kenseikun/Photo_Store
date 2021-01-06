@@ -15,9 +15,20 @@ import MainTemplate from "../templates/MainTemplate";
 const Root = () => {
   const [initialProducts, setInitialProducts] = useState([...localData]);
   const [products, setProducts] = useState([...localData]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const handleCartOpen = () => {
+    setIsCartOpen(true);
+  };
+
+  const handleCartClose = () => {
+    setIsCartOpen(false);
+  };
   return (
     <>
-      <RootContext.Provider value={{ products }}>
+      <RootContext.Provider
+        value={{ products, isCartOpen, handleCartOpen, handleCartClose }}
+      >
         {/* <Test /> */}
         <BrowserRouter>
           <MainTemplate>

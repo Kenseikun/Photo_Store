@@ -19,11 +19,6 @@ const ProductsList = () => {
         } = product;
         return (
           <li key={productId}>
-            {/* <p>{product.productName}</p> */}
-            {/* <ProductShow
-              type={product.productCategory}
-              img={product.productImage}
-            /> */}
             <DisplayProduct
               // {...product}
               productPrice={productPrice}
