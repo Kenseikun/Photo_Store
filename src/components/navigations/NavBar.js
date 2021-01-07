@@ -16,6 +16,7 @@ const DisplayNav = styled.nav`
   justify-content: flex-start;
   align-items: center;
   gap: 20px;
+  padding: 10px;
 `;
 
 const DisplayUl = styled.ul`

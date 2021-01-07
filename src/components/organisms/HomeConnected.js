@@ -17,7 +17,7 @@ import SocialMedias from "../atoms/SocialMedias";
 const HomeWrapper = styled.div`
   display: flex;
   justify-content: space-around;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 70px);
 `;
 const HomeImageWrapper = styled.div`
   display: flex;

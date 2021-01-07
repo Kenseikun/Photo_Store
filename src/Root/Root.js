@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import RootContext from "../context";
 import { localData } from "../localData";
-import { mainTheme } from "../GlobalStyles/theme/mainTheme";
+
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "../views/Home";
 import About from "../views/About";
@@ -15,7 +15,8 @@ import MainTemplate from "../templates/MainTemplate";
 const Root = () => {
   const [initialProducts, setInitialProducts] = useState([...localData]);
   const [products, setProducts] = useState([...localData]);
-  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cart, setCart] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(true);
 
   const handleCartOpen = () => {
     setIsCartOpen(true);
