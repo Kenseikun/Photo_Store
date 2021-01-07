@@ -38,7 +38,7 @@ const DisplayLi = styled.li`
 
 const NavBar = () => {
   const context = useContext(RootContext);
-  const { handleCartOpen } = context;
+  const { handleCartOpen, cart } = context;
   return (
     <DisplayNav>
       <Link to={routes.home}>
@@ -66,8 +66,8 @@ const NavBar = () => {
           </NavLink>
         </DisplayLi>
         <DisplayLi>
-          <Button icon={cartIcon} cartBtn onClickFn={handleCartOpen}>
-            1
+          <Button icon={cartIcon} cartBtn onClickHandleCart={handleCartOpen}>
+            {cart.length}
           </Button>
         </DisplayLi>
       </DisplayUl>

@@ -42,14 +42,26 @@ const StyledButton = styled.button`
     `}
 `;
 
-const Button = ({ type, children, cartBtn, icon, onClickFn, inHome }) => {
+const Button = ({
+  type,
+  children,
+  cartBtn,
+  icon,
+  inHome,
+  productId,
+  onClickHandleCart,
+  onClickHandleAddToCart,
+}) => {
   return (
     <StyledButton
       cartBtn={cartBtn}
       icon={icon}
       type={type}
-      onClick={onClickFn}
       inHome={inHome}
+      onClick={() => {
+        onClickHandleCart();
+        onClickHandleAddToCart(productId);
+      }}
     >
       {children}
     </StyledButton>

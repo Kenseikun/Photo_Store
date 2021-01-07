@@ -25,10 +25,25 @@ const Root = () => {
   const handleCartClose = () => {
     setIsCartOpen(false);
   };
+
+  const handleAddProductToBasket = (productId) => {
+    const filteredProduct = products.find((product) => {
+      return product.productId === productId;
+    });
+    setCart([...cart, filteredProduct]);
+  };
+
   return (
     <>
       <RootContext.Provider
-        value={{ products, isCartOpen, handleCartOpen, handleCartClose }}
+        value={{
+          products,
+          cart,
+          isCartOpen,
+          handleCartOpen,
+          handleCartClose,
+          handleAddProductToBasket,
+        }}
       >
         {/* <Test /> */}
         <BrowserRouter>

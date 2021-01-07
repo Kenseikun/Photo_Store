@@ -19,11 +19,13 @@ const DisplayProductName = styled.p`
 const DisplayProductDescription = styled.p``;
 
 const DisplayProduct = ({
+  productId,
   productPrice,
   productName,
   productDescription,
   productCategory,
   productImage,
+  handleAddProductToBasket,
 }) => {
   return (
     <DisplayProductWrapper>
@@ -31,7 +33,13 @@ const DisplayProduct = ({
       <DisplayDetailsWrapper>
         <DisplayProductPrice>{productPrice} PLN</DisplayProductPrice>
         <DisplayProductName>{productName}</DisplayProductName>
-        <Button type={productCategory}>add product</Button>
+        <Button
+          type={productCategory}
+          onClickHandleAddToCart={handleAddProductToBasket}
+          productId={productId}
+        >
+          add product
+        </Button>
         <DisplayProductDescription>
           {productDescription}
         </DisplayProductDescription>

@@ -4,7 +4,7 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import RootContext from "../../context";
-import { Button } from "@material-ui/core";
+import DisplayProductInCart from "../molecules/DisplayProductInCart";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   paper: {
-    backgroundColor: "#040d21",
+    backgroundColor: "#391f49",
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
@@ -21,10 +21,11 @@ const useStyles = makeStyles((theme) => ({
     height: "80vh",
     outline: "none",
     borderRadius: "5px",
-  },
-  cartBtn: {
-    color: "yellow",
-    backgroundColor: "black",
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+    overflow: "auto",
+    gap: "10px",
   },
 }));
 
@@ -49,11 +50,10 @@ const Cart = () => {
     >
       <Fade in={isCartOpen}>
         <div className={classes.paper}>
-          <h2 id="transition-modal-title">Transition modal</h2>
-          <p id="transition-modal-description">
-            react-transition-group animates me.
-          </p>
-          <Button>aa</Button>
+          <h2>Shopping Cart</h2>
+          <p>Total Price: 0000 PLN</p>
+
+          <DisplayProductInCart />
         </div>
       </Fade>
     </Modal>
