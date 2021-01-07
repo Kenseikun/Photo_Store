@@ -6,7 +6,7 @@ import styled, { css } from "styled-components";
 const ProductsWrapper = styled.div`
   position: relative;
   /* width: 350px; */
-  width: ${({ isInBasket }) => (isInBasket ? "500px" : "350px")};
+  width: ${({ isInBasket }) => (isInBasket ? "500px" : "250px")};
 
   height: 120px;
 
@@ -40,6 +40,12 @@ const ProductsWrapper = styled.div`
 
     z-index: 1;
   }
+
+  ${({ inCart }) =>
+    inCart &&
+    css`
+      width: 200px;
+    `}
 `;
 const ProductImage = styled.img`
   position: absolute;
@@ -47,9 +53,9 @@ const ProductImage = styled.img`
   z-index: 2;
 `;
 
-const ProductShow = ({ type, img, inBasket }) => {
+const ProductShow = ({ type, img, inBasket, inCart }) => {
   return (
-    <ProductsWrapper type={type} isInBasket={inBasket}>
+    <ProductsWrapper type={type} isInBasket={inBasket} inCart={inCart}>
       <ProductImage src={img}></ProductImage>
     </ProductsWrapper>
   );

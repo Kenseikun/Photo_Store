@@ -10,14 +10,32 @@ import img from ".././../assets/images/canon18-135.jpg";
 
 const ProductWrapper = styled.div`
   width: 100%;
-  display: flex;
+  height: 100%;
+  /* display: flex;
   justify-content: space-around;
+  align-items: center; */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   align-items: center;
+  gap: 20px;
   padding: 5px;
   background-color: rgba(0, 0, 0, 0.2);
 `;
 
-const ProductDescription = styled.p``;
+const ProductDescriptionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+`;
+const ProductDescriptionPrice = styled.p``;
+const ProductDescriptionName = styled.p``;
+
+const ProductQuantity = styled.p`
+  font-weight: 800;
+`;
 
 const ProductPrice = styled.p`
   font-weight: 800;
@@ -36,8 +54,11 @@ const DisplayProductInCart = () => {
   return (
     <>
       <ProductWrapper>
-        <ProductShow img={img} />
-        <ProductDescription>25PLN Sony a500</ProductDescription>
+        <ProductShow img={img} inCart />
+        <ProductDescriptionWrapper>
+          <ProductDescriptionPrice>125PLN</ProductDescriptionPrice>
+          <ProductDescriptionName>Sony a500</ProductDescriptionName>
+        </ProductDescriptionWrapper>
         <ButtonGroup>
           <Button
             className={classes.button}
@@ -58,6 +79,8 @@ const DisplayProductInCart = () => {
             Remove
           </Button>
         </ButtonGroup>
+
+        <ProductQuantity>2</ProductQuantity>
 
         <ProductPrice>00000 PLN</ProductPrice>
       </ProductWrapper>
@@ -85,6 +108,8 @@ const DisplayProductInCart = () => {
             Remove
           </Button>
         </ButtonGroup>
+
+        <ProductQuantity>1</ProductQuantity>
 
         <ProductPrice>123 PLN</ProductPrice>
       </ProductWrapper>
