@@ -4,7 +4,7 @@ import DisplayProduct from "./molecules/DisplayProduct";
 
 const ProductsList = () => {
   const context = useContext(RootContext);
-  const { products, handleAddProductToBasket } = context;
+  const { products } = context;
 
   return (
     <ul>
@@ -27,7 +27,6 @@ const ProductsList = () => {
               productCategory={productCategory}
               productImage={productImage}
               productId={productId}
-              handleAddProductToBasket={handleAddProductToBasket}
             />
           </li>
         );

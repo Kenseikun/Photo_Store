@@ -66,7 +66,7 @@ const NavBar = () => {
           </NavLink>
         </DisplayLi>
         <DisplayLi>
-          <Button icon={cartIcon} cartBtn onClickHandleCart={handleCartOpen}>
+          <Button icon={cartIcon} cartBtn onClickFn={handleCartOpen}>
             {cart.length}
           </Button>
         </DisplayLi>

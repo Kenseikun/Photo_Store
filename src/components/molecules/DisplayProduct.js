@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import RootContext from "../../context";
 import Button from "../atoms/Button";
 import ProductShow from "../atoms/ProductShow";
 
@@ -37,8 +38,10 @@ const DisplayProduct = ({
   productDescription,
   productCategory,
   productImage,
-  handleAddProductToBasket,
 }) => {
+  const context = useContext(RootContext);
+  const { handleAddProductToCart } = context;
+
   return (
     <DisplayProductWrapper>
       <ProductShow type={productCategory} img={productImage} />
@@ -47,7 +50,7 @@ const DisplayProduct = ({
         <DisplayProductName>{productName}</DisplayProductName>
         <Button
           type={productCategory}
-          onClickHandleAddToCart={handleAddProductToBasket}
+          onClickFn={() => handleAddProductToCart(productId)}
           productId={productId}
         >
           add product

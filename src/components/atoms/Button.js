@@ -48,9 +48,8 @@ const Button = ({
   cartBtn,
   icon,
   inHome,
-  productId,
-  onClickHandleCart,
-  onClickHandleAddToCart,
+
+  onClickFn,
 }) => {
   return (
     <StyledButton
@@ -58,10 +57,7 @@ const Button = ({
       icon={icon}
       type={type}
       inHome={inHome}
-      onClick={() => {
-        onClickHandleCart();
-        onClickHandleAddToCart(productId);
-      }}
+      onClick={onClickFn}
     >
       {children}
     </StyledButton>

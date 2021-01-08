@@ -33,7 +33,7 @@ const Cart = () => {
   const classes = useStyles();
 
   const context = useContext(RootContext);
-  const { isCartOpen, handleCartClose } = context;
+  const { isCartOpen, handleCartClose, cartTotalPrice } = context;
 
   return (
     <Modal
@@ -51,7 +51,7 @@ const Cart = () => {
       <Fade in={isCartOpen}>
         <div className={classes.paper}>
           <h2>Shopping Cart</h2>
-          <p>Total Price: 0000 PLN</p>
+          <p>Total Price: {cartTotalPrice} PLN</p>
 
           <DisplayProductInCart />
         </div>

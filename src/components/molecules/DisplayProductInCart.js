@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { Button, ButtonGroup } from "@material-ui/core";
-import { ControlPoint, HighlightOff } from "@material-ui/icons";
+import { Button, ButtonBase, ButtonGroup } from "@material-ui/core";
+import {
+  Add,
+  ControlPoint,
+  Delete,
+  HighlightOff,
+  Remove,
+} from "@material-ui/icons";
 import ProductShow from "../atoms/ProductShow";
 import styled from "styled-components";
 
-import img from ".././../assets/images/canon18-135.jpg";
+import RootContext from "../../context";
+
+const LIproduct = styled.li`
+  list-style: none;
+`;
 
 const ProductWrapper = styled.div`
   width: 100%;
@@ -14,11 +24,11 @@ const ProductWrapper = styled.div`
   /* display: flex;
   justify-content: space-around;
   align-items: center; */
+  margin: 10px auto;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
-  gap: 20px;
-  padding: 5px;
+  gap: 40px;
   background-color: rgba(0, 0, 0, 0.2);
 `;
 
@@ -30,20 +40,22 @@ const ProductDescriptionWrapper = styled.div`
   gap: 20px;
   height: 100%;
 `;
-const ProductDescriptionPrice = styled.p``;
-const ProductDescriptionName = styled.p``;
+const ProductPrice = styled.p`
+  ${({ theme }) => theme.fontFamily.extra};
+  font-weight: 500;
+`;
+
+const ProductName = styled.p`
+  font-weight: 800;
+`;
 
 const ProductQuantity = styled.p`
   font-weight: 800;
 `;
 
-const ProductPrice = styled.p`
-  font-weight: 800;
-`;
-
 const useStyles = makeStyles((theme) => ({
   button: {
-    height: "20px",
+    height: "40px",
     fontSize: "0.6em",
     padding: "8px",
   },
@@ -51,149 +63,67 @@ const useStyles = makeStyles((theme) => ({
 
 const DisplayProductInCart = () => {
   const classes = useStyles();
+  const context = useContext(RootContext);
+  const {
+    cart,
+    handleProductQuantityAddBtn,
+    handleProductQuantityRemoveBtn,
+    handleRemoveProductFromCartBtn,
+  } = context;
   return (
     <>
-      <ProductWrapper>
-        <ProductShow img={img} inCart />
-        <ProductDescriptionWrapper>
-          <ProductDescriptionPrice>125PLN</ProductDescriptionPrice>
-          <ProductDescriptionName>Sony a500</ProductDescriptionName>
-        </ProductDescriptionWrapper>
-        <ButtonGroup>
-          <Button
-            className={classes.button}
-            size="small"
-            variant="contained"
-            color="primary"
-            startIcon={<ControlPoint />}
-          >
-            add more
-          </Button>
-          <Button
-            className={classes.button}
-            size="small"
-            variant="contained"
-            color="secondary"
-            startIcon={<HighlightOff />}
-          >
-            Remove
-          </Button>
-        </ButtonGroup>
+      <ul>
+        {cart.map((product) => {
+          const {
+            productId,
+            productImage,
+            productPrice,
+            productName,
+            productQuantity,
+            productCategory,
+          } = product;
+          return (
+            <LIproduct>
+              <ProductWrapper>
+                <ProductShow img={productImage} type={productCategory} inCart />
+                <ProductDescriptionWrapper>
+                  <ProductPrice>{productPrice} PLN</ProductPrice>
+                  <ProductName>{productName}</ProductName>
+                </ProductDescriptionWrapper>
+                <ButtonGroup>
+                  <Button
+                    className={classes.button}
+                    size="small"
+                    variant="contained"
+                    color="primary"
+                    onClick={() => handleProductQuantityAddBtn(productId)}
+                  >
+                    <Add />
+                  </Button>
+                  <Button
+                    className={classes.button}
+                    size="small"
+                    variant="contained"
+                    color="secondary"
+                    onClick={() => handleProductQuantityRemoveBtn(productId)}
+                    disabled={productQuantity === 1 ? true : false}
+                  >
+                    <Remove />
+                  </Button>
+                </ButtonGroup>
 
-        <ProductQuantity>2</ProductQuantity>
+                <ProductQuantity>{productQuantity}</ProductQuantity>
 
-        <ProductPrice>00000 PLN</ProductPrice>
-      </ProductWrapper>
-
-      <ProductWrapper>
-        <ProductShow img={img} />
-
-        <ButtonGroup>
-          <Button
-            className={classes.button}
-            size="small"
-            variant="contained"
-            color="primary"
-            startIcon={<ControlPoint />}
-          >
-            add more
-          </Button>
-          <Button
-            className={classes.button}
-            size="small"
-            variant="contained"
-            color="secondary"
-            startIcon={<HighlightOff />}
-          >
-            Remove
-          </Button>
-        </ButtonGroup>
-
-        <ProductQuantity>1</ProductQuantity>
-
-        <ProductPrice>123 PLN</ProductPrice>
-      </ProductWrapper>
-
-      <ProductWrapper>
-        <ProductShow img={img} />
-
-        <ButtonGroup>
-          <Button
-            className={classes.button}
-            size="small"
-            variant="contained"
-            color="primary"
-            startIcon={<ControlPoint />}
-          >
-            add more
-          </Button>
-          <Button
-            className={classes.button}
-            size="small"
-            variant="contained"
-            color="secondary"
-            startIcon={<HighlightOff />}
-          >
-            Remove
-          </Button>
-        </ButtonGroup>
-
-        <ProductPrice>123 PLN</ProductPrice>
-      </ProductWrapper>
-
-      <ProductWrapper>
-        <ProductShow img={img} />
-
-        <ButtonGroup>
-          <Button
-            className={classes.button}
-            size="small"
-            variant="contained"
-            color="primary"
-            startIcon={<ControlPoint />}
-          >
-            add more
-          </Button>
-          <Button
-            className={classes.button}
-            size="small"
-            variant="contained"
-            color="secondary"
-            startIcon={<HighlightOff />}
-          >
-            Remove
-          </Button>
-        </ButtonGroup>
-
-        <ProductPrice>123 PLN</ProductPrice>
-      </ProductWrapper>
-
-      <ProductWrapper>
-        <ProductShow img={img} />
-
-        <ButtonGroup>
-          <Button
-            className={classes.button}
-            size="small"
-            variant="contained"
-            color="primary"
-            startIcon={<ControlPoint />}
-          >
-            add more
-          </Button>
-          <Button
-            className={classes.button}
-            size="small"
-            variant="contained"
-            color="secondary"
-            startIcon={<HighlightOff />}
-          >
-            Remove
-          </Button>
-        </ButtonGroup>
-
-        <ProductPrice>123 PLN</ProductPrice>
-      </ProductWrapper>
+                <ButtonBase
+                  onClick={() => handleRemoveProductFromCartBtn(productId)}
+                >
+                  <Delete fontSize="large" />
+                </ButtonBase>
+              </ProductWrapper>
+            </LIproduct>
+          );
+        })}
+      </ul>
     </>
   );
 };

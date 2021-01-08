@@ -17,6 +17,7 @@ const Root = () => {
   const [products, setProducts] = useState([...localData]);
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartTotalPrice, setCartTotalPrice] = useState(0);
 
   const handleCartOpen = () => {
     setIsCartOpen(true);
@@ -26,11 +27,61 @@ const Root = () => {
     setIsCartOpen(false);
   };
 
-  const handleAddProductToBasket = (productId) => {
+  const handleAddProductToCart = (productId) => {
     const filteredProduct = products.find((product) => {
       return product.productId === productId;
     });
-    setCart([...cart, filteredProduct]);
+    // const filteredProduct = products.find(
+    //   (product) => product.productId === productId
+    // );
+    setCart([...new Set([...cart, filteredProduct])]);
+  };
+
+  const calculate = () => {
+    let tempCartTotalPrice = 0;
+
+    cart.forEach((product) => {
+      return (tempCartTotalPrice +=
+        product.productPrice * product.productQuantity);
+    });
+
+    setCartTotalPrice(tempCartTotalPrice);
+  };
+
+  useEffect(() => {
+    calculate();
+  }, [cart]);
+
+  const handleProductQuantityAddBtn = (productId) => {
+    const mappedProduct = cart.map((product) => {
+      if (product.productId === productId) {
+        product.productQuantity += 1;
+      }
+      return product;
+    });
+
+    setCart([...mappedProduct]);
+  };
+
+  const handleProductQuantityRemoveBtn = (productId) => {
+    const mappedProduct = cart.map((product) => {
+      if (product.productId === productId) {
+        product.productQuantity -= 1;
+      }
+      return product;
+    });
+
+    setCart([...mappedProduct]);
+  };
+
+  const handleRemoveProductFromCartBtn = (productId) => {
+    const mappedProduct = cart.filter((product) => {
+      if (product.productId !== productId) {
+        return product;
+      }
+    });
+
+    setCart([...mappedProduct]);
   };
 
   return (
@@ -42,7 +93,11 @@ const Root = () => {
           isCartOpen,
           handleCartOpen,
           handleCartClose,
-          handleAddProductToBasket,
+          handleAddProductToCart,
+          handleProductQuantityAddBtn,
+          handleProductQuantityRemoveBtn,
+          handleRemoveProductFromCartBtn,
+          cartTotalPrice,
         }}
       >
         {/* <Test /> */}
