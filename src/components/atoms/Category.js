@@ -16,7 +16,7 @@ const DIVcategorySign = styled.div`
   background-color: ${({ theme }) => theme.colors.violet};
 `;
 
-const Category = ({ children }) => {
+const Category = ({ children, category: all }) => {
   return (
     <DIVcategoryWrapper>
       <DIVcategorySign>{children}</DIVcategorySign>

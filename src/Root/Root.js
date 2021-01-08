@@ -16,7 +16,7 @@ const Root = () => {
   const [initialProducts, setInitialProducts] = useState([...localData]);
   const [products, setProducts] = useState([...localData]);
   const [cart, setCart] = useState([]);
-  const [isCartOpen, setIsCartOpen] = useState(true);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const handleCartOpen = () => {
     setIsCartOpen(true);

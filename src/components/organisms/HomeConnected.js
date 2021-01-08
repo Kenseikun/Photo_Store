@@ -1,23 +1,28 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import homeImg from "../../assets/landingImage/landingPageCamera.png";
 import DisplayHome from "../molecules/DisplayHome";
 import SocialMedias from "../atoms/SocialMedias";
 
-// const rotate = keyframes`
-//   from {
-//     transform: rotate(0deg);
-//   }
+const imgAnimate = keyframes`
+  from {
+    transform: translateX(200px) scale(0.2);
+    opacity: 0;
+    
+  }
 
-//   to {
-//     transform: rotate(360deg);
-//   }
-// `;
+  to {
+    transform:  translateX(0px) scale(1);
+    opacity: 10;
+   
+  }
+`;
 
 const HomeWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   height: calc(100vh - 70px);
+  overflow: hidden;
 `;
 const HomeImageWrapper = styled.div`
   display: flex;
@@ -28,6 +33,7 @@ const HomeImageWrapper = styled.div`
 const HomeImage = styled.img`
   height: 60vh;
   margin: 30px auto;
+  animation: ${imgAnimate} 1s linear forwards;
 `;
 
 const HomeConnected = () => {
