@@ -6,6 +6,7 @@ import styled from "styled-components";
 import cartIcon from "../../assets/icons/shopping-bag.svg";
 import Button from "../atoms/Button";
 import RootContext from "../../context";
+import Search from "../organisms/Search";
 
 const activeNavLinkStyle = {
   borderBottom: `2px solid #ac003e`,
@@ -69,6 +70,9 @@ const NavBar = () => {
           <Button icon={cartIcon} cartBtn onClickFn={handleCartOpen}>
             {cart.length}
           </Button>
+        </DisplayLi>
+        <DisplayLi>
+          <Search />
         </DisplayLi>
       </DisplayUl>
     </DisplayNav>

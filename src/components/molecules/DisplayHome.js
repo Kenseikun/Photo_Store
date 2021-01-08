@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "../atoms/Button";
+import { Link } from "react-router-dom";
+import { routes } from "../../routes";
 
 const DisplayHomeWrapper = styled.div`
   display: flex;
@@ -37,21 +39,29 @@ const DisplayHome = () => {
         Just click the button below!
       </DisplayHomeDescription>
       <DisplayButtonsWrapper>
-        <Button type={"cameras"} inHome>
-          Cameras
-        </Button>
+        <Link to={routes.products}>
+          <Button type={"cameras"} inHome>
+            Cameras
+          </Button>
+        </Link>
 
-        <Button type={"lenses"} inHome>
-          Lenses
-        </Button>
+        <Link to={routes.products}>
+          <Button type={"lenses"} inHome>
+            Lenses
+          </Button>
+        </Link>
 
-        <Button type={"speedlights"} inHome>
-          Speedlights
-        </Button>
+        <Link to={routes.products}>
+          <Button type={"speedlights"} inHome>
+            Speedlights
+          </Button>
+        </Link>
 
-        <Button type={""} inHome>
-          All
-        </Button>
+        <Link to={routes.products}>
+          <Button type={""} inHome>
+            All
+          </Button>
+        </Link>
       </DisplayButtonsWrapper>
     </DisplayHomeWrapper>
   );

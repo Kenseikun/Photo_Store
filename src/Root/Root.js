@@ -18,6 +18,7 @@ const Root = () => {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
+  const [category, setCategory] = useState("all");
 
   const handleCartOpen = () => {
     setIsCartOpen(true);
@@ -91,6 +92,7 @@ const Root = () => {
           products,
           cart,
           isCartOpen,
+          category,
           handleCartOpen,
           handleCartClose,
           handleAddProductToCart,

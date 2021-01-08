@@ -2,13 +2,7 @@ import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { Button, ButtonBase, ButtonGroup } from "@material-ui/core";
-import {
-  Add,
-  ControlPoint,
-  Delete,
-  HighlightOff,
-  Remove,
-} from "@material-ui/icons";
+import { Add, Delete, Remove } from "@material-ui/icons";
 import ProductShow from "../atoms/ProductShow";
 import styled from "styled-components";
 

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import RootContext from "../context";
 import ProductsList from "../components/ProductsList";
 import styled from "styled-components";
 import Category from "../components/atoms/Category";
@@ -8,10 +9,12 @@ const DIVproductsWrapper = styled.div`
 `;
 
 const Products = () => {
+  const context = useContext(RootContext);
+  const { category } = context;
   return (
     <DIVproductsWrapper>
       <ProductsList />
-      <Category>All</Category>
+      <Category>{category}</Category>
     </DIVproductsWrapper>
   );
 };
