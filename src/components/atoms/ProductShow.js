@@ -5,13 +5,8 @@ import styled, { css } from "styled-components";
 
 const ProductsWrapper = styled.div`
   position: relative;
-  /* width: 350px; */
-  width: ${({ isInBasket }) => (isInBasket ? "500px" : "250px")};
-
+  width: ${({ isInBasket }) => (isInBasket ? "500px" : "350px")};
   height: 120px;
-
-  /* background-color: ${({ bgColor }) => bgColor}; */
-
   background-color: transparent;
   z-index: 0;
 
@@ -29,7 +24,6 @@ const ProductsWrapper = styled.div`
     content: "";
     width: 98%;
     height: 100%;
-    /* background-color: red; */
 
     background-color: ${({ type, theme }) =>
       type === "cameras"

@@ -7,16 +7,28 @@ const DisplayProductWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70%;
-  margin: 10px;
+  gap: 10px;
+  width: 90%;
+
+  margin: 20px 20px;
 `;
-const DisplayDetailsWrapper = styled.div``;
-const DisplayProductPrice = styled.p``;
+const DisplayDetailsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+`;
+const DisplayProductPrice = styled.p`
+  font-family: ${({ theme }) => theme.fontFamily.extra};
+  font-weight: 100;
+`;
 const DisplayProductName = styled.p`
-  /* font-family: ${({ theme }) => theme.fontFamily.extra}; */
   font-weight: bold;
 `;
-const DisplayProductDescription = styled.p``;
+const DisplayProductDescription = styled.p`
+  font-weight: 100;
+`;
 
 const DisplayProduct = ({
   productId,
