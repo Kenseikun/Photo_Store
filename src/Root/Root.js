@@ -18,6 +18,7 @@ const Root = () => {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
+  const [productsQuantity, setProductsQuantity] = useState(0);
   const [category, setCategory] = useState("all");
 
   const handleCartOpen = () => {
@@ -35,6 +36,7 @@ const Root = () => {
     // const filteredProduct = products.find(
     //   (product) => product.productId === productId
     // );
+    filteredProduct.productQuantity += 1;
     setCart([...new Set([...cart, filteredProduct])]);
   };
 
@@ -51,6 +53,20 @@ const Root = () => {
 
   useEffect(() => {
     calculate();
+  }, [cart]);
+
+  const totalProductsQuantity = () => {
+    let tempCartTotalQuantity = 0;
+
+    cart.forEach((product) => {
+      return (tempCartTotalQuantity += product.productQuantity);
+    });
+
+    setProductsQuantity(tempCartTotalQuantity);
+  };
+
+  useEffect(() => {
+    totalProductsQuantity();
   }, [cart]);
 
   const handleProductQuantityAddBtn = (productId) => {
@@ -100,6 +116,7 @@ const Root = () => {
           handleProductQuantityRemoveBtn,
           handleRemoveProductFromCartBtn,
           cartTotalPrice,
+          productsQuantity,
         }}
       >
         {/* <Test /> */}
