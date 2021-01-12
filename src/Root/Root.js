@@ -16,10 +16,19 @@ const Root = () => {
   const [initialProducts, setInitialProducts] = useState([...localData]);
   const [products, setProducts] = useState([...localData]);
   const [cart, setCart] = useState([]);
+  const [filteredCart, setFilteredCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
-  const [productsQuantity, setProductsQuantity] = useState(0);
+  const [productsInCartQuantity, setProductsInCartQuantity] = useState(0);
   const [category, setCategory] = useState("all");
+
+  const increaseProductsInCartQuantity = () => {
+    setProductsInCartQuantity(productsInCartQuantity + 1);
+  };
+
+  const decreaseProductsInCartQuantity = () => {
+    setProductsInCartQuantity(productsInCartQuantity - 1);
+  };
 
   const handleCartOpen = () => {
     setIsCartOpen(true);
@@ -33,11 +42,19 @@ const Root = () => {
     const filteredProduct = products.find((product) => {
       return product.productId === productId;
     });
-    // const filteredProduct = products.find(
-    //   (product) => product.productId === productId
-    // );
-    filteredProduct.productQuantity += 1;
+    increaseProductsInCartQuantity();
     setCart([...new Set([...cart, filteredProduct])]);
+  };
+
+  const handleDuplicatesInCart = (productId) => {
+    const mappedProduct = cart.map((product) => {
+      if (product.productId === productId) {
+        product.productQuantity += 1;
+      }
+      return product;
+    });
+
+    setCart([...mappedProduct]);
   };
 
   const calculate = () => {
@@ -55,21 +72,7 @@ const Root = () => {
     calculate();
   }, [cart]);
 
-  const totalProductsQuantity = () => {
-    let tempCartTotalQuantity = 0;
-
-    cart.forEach((product) => {
-      return (tempCartTotalQuantity += product.productQuantity);
-    });
-
-    setProductsQuantity(tempCartTotalQuantity);
-  };
-
-  useEffect(() => {
-    totalProductsQuantity();
-  }, [cart]);
-
-  const handleProductQuantityAddBtn = (productId) => {
+  const handleProductQuantityInCartAdd = (productId) => {
     const mappedProduct = cart.map((product) => {
       if (product.productId === productId) {
         product.productQuantity += 1;
@@ -77,28 +80,36 @@ const Root = () => {
       return product;
     });
 
+    increaseProductsInCartQuantity();
     setCart([...mappedProduct]);
   };
 
-  const handleProductQuantityRemoveBtn = (productId) => {
+  const handleProductQuantityInCartRemove = (productId) => {
     const mappedProduct = cart.map((product) => {
       if (product.productId === productId) {
         product.productQuantity -= 1;
       }
       return product;
     });
-
+    decreaseProductsInCartQuantity();
     setCart([...mappedProduct]);
   };
 
-  const handleRemoveProductFromCartBtn = (productId) => {
+  const handleRemoveProductFromCartBtn = (productId, productQuantity) => {
     const mappedProduct = cart.filter((product) => {
       if (product.productId !== productId) {
         return product;
+      } else {
+        setProductsInCartQuantity(
+          productsInCartQuantity - product.productQuantity
+        );
+        product.productQuantity = 1;
       }
     });
 
     setCart([...mappedProduct]);
+
+    // setProductsInCartQuantity(productsInCartQuantity - productQuantity);
   };
 
   return (
@@ -112,11 +123,12 @@ const Root = () => {
           handleCartOpen,
           handleCartClose,
           handleAddProductToCart,
-          handleProductQuantityAddBtn,
-          handleProductQuantityRemoveBtn,
+          handleProductQuantityInCartAdd,
+          handleProductQuantityInCartRemove,
           handleRemoveProductFromCartBtn,
           cartTotalPrice,
-          productsQuantity,
+          productsInCartQuantity,
+          handleDuplicatesInCart,
         }}
       >
         {/* <Test /> */}

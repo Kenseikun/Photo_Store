@@ -33,12 +33,7 @@ const Cart = () => {
   const classes = useStyles();
 
   const context = useContext(RootContext);
-  const {
-    isCartOpen,
-    handleCartClose,
-    cartTotalPrice,
-    productsQuantity,
-  } = context;
+  const { isCartOpen, handleCartClose, cartTotalPrice } = context;
 
   return (
     <Modal

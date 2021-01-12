@@ -40,7 +40,7 @@ const DisplayProduct = ({
   productImage,
 }) => {
   const context = useContext(RootContext);
-  const { handleAddProductToCart } = context;
+  const { handleAddProductToCart, handleDuplicatesInCart } = context;
 
   return (
     <DisplayProductWrapper>
@@ -50,7 +50,10 @@ const DisplayProduct = ({
         <DisplayProductName>{productName}</DisplayProductName>
         <Button
           type={productCategory}
-          onClickFn={() => handleAddProductToCart(productId)}
+          onClickFn={() => {
+            handleDuplicatesInCart(productId);
+            handleAddProductToCart(productId);
+          }}
           productId={productId}
         >
           add product

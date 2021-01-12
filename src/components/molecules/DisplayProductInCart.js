@@ -60,9 +60,10 @@ const DisplayProductInCart = () => {
   const context = useContext(RootContext);
   const {
     cart,
-    handleProductQuantityAddBtn,
-    handleProductQuantityRemoveBtn,
+    handleProductQuantityInCartAdd,
+    handleProductQuantityInCartRemove,
     handleRemoveProductFromCartBtn,
+    productsInCartQuantity,
   } = context;
   return (
     <>
@@ -90,7 +91,7 @@ const DisplayProductInCart = () => {
                     size="small"
                     variant="contained"
                     color="primary"
-                    onClick={() => handleProductQuantityAddBtn(productId)}
+                    onClick={() => handleProductQuantityInCartAdd(productId)}
                   >
                     <Add />
                   </Button>
@@ -99,7 +100,7 @@ const DisplayProductInCart = () => {
                     size="small"
                     variant="contained"
                     color="secondary"
-                    onClick={() => handleProductQuantityRemoveBtn(productId)}
+                    onClick={() => handleProductQuantityInCartRemove(productId)}
                     disabled={productQuantity === 1 ? true : false}
                   >
                     <Remove />
@@ -109,7 +110,9 @@ const DisplayProductInCart = () => {
                 <ProductQuantity>{productQuantity}</ProductQuantity>
 
                 <ButtonBase
-                  onClick={() => handleRemoveProductFromCartBtn(productId)}
+                  onClick={() =>
+                    handleRemoveProductFromCartBtn(productId, productQuantity)
+                  }
                 >
                   <Delete fontSize="large" />
                 </ButtonBase>
