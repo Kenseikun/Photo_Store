@@ -13,13 +13,14 @@ const DIVcategorySign = styled.div`
   font-family: ${({ theme }) => theme.fontFamily.main};
   font-weight: 300;
   font-size: 1.3em;
-  background-color: ${({ theme }) => theme.colors.violet};
+  background-color: ${({ inContact, theme }) =>
+    inContact ? theme.colors.blue : theme.colors.violet};
 `;
 
-const Category = ({ children, category: all }) => {
+const Category = ({ children, category: all, inContact }) => {
   return (
     <DIVcategoryWrapper>
-      <DIVcategorySign>{children}</DIVcategorySign>
+      <DIVcategorySign inContact={inContact}>{children}</DIVcategorySign>
     </DIVcategoryWrapper>
   );
 };

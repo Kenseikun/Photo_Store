@@ -1,11 +1,8 @@
 import React from "react";
+import DisplayContact from "../components/molecules/DisplayContact";
 
 const Contact = () => {
-  return (
-    <div>
-      <h2>Contact</h2>
-    </div>
-  );
+  return <DisplayContact />;
 };
 
 export default Contact;

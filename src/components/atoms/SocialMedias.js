@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
 import fb from "../../assets/icons/fb.png";
 import instagram from "../../assets/icons/instagram.png";
@@ -21,11 +21,13 @@ const Icons = styled.img`
   &:hover {
     transform: translateY(-50%);
   }
+
+  ${({ inContact }) => inContact && css``}
 `;
 
-const SocialMedias = () => {
+const SocialMedias = ({ inContact }) => {
   return (
-    <DisplayIconsWrapper>
+    <DisplayIconsWrapper inContact={inContact}>
       <NavLink to="/">
         <Icons src={fb} att="social media icon"></Icons>
       </NavLink>

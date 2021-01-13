@@ -117,7 +117,7 @@ const Root = () => {
   };
 
   const filteredByPrice = (e) => {
-    setCheck(!check);
+    // setCheck(!check);
 
     const sortedProducts = products.sort((a, b) => {
       if (check === true) {
@@ -129,41 +129,50 @@ const Root = () => {
     setProducts([...sortedProducts]);
   };
 
-  const filterByCategory = (e) => {
-    const filter = e.target.value;
-    console.log(filter);
+  // const filterByCategory = (e) => {
+  //   const filter = e.target.value;
+  //   console.log(filter);
 
-    switch (filter) {
-      case "cameras":
-        const filteredByCameras = products.filter((product) => {
-          if (product.productCategory === "cameras") {
-            return product;
-          }
-          setProducts([...filteredByCameras]);
-        });
-        break;
-      case "lenses":
-        const filteredByLenses = products.filter((product) => {
-          if (product.productCategory === "lenses") {
-            return product;
-          }
-          setProducts([...filteredByLenses]);
-        });
-        break;
-      case "speedlights":
-        const filteredBySpeedlights = products.filter((product) => {
-          if (product.productCategory === "speedlights") {
-            return product;
-          }
-          setProducts([...filteredBySpeedlights]);
-        });
-        break;
+  //   switch (filter) {
+  //     case "cameras":
+  //       const filteredByCameras = products.filter((product) => {
+  //         if (product.productCategory === "cameras") {
+  //           return product;
+  //         }
+  //         setProducts([...filteredByCameras]);
+  //       });
+  //       break;
+  //     case "lenses":
+  //       const filteredByLenses = products.filter((product) => {
+  //         if (product.productCategory === "lenses") {
+  //           return product;
+  //         }
+  //         setProducts([...filteredByLenses]);
+  //       });
+  //       break;
+  //     case "speedlights":
+  //       const filteredBySpeedlights = products.filter((product) => {
+  //         if (product.productCategory === "speedlights") {
+  //           return product;
+  //         }
+  //         setProducts([...filteredBySpeedlights]);
+  //       });
+  //       break;
 
-      default:
-        setProducts([...initialProducts]);
-        break;
-    }
-  };
+  //     default:
+  //       setProducts([...initialProducts]);
+  //       break;
+  //   }
+
+  //   if (filter === "cameras") {
+  //     const filteredByCameras = products.filter((product) => {
+  //       if (product.productCategory === "cameras") {
+  //         return product;
+  //       }
+  //       setProducts([...filteredByCameras]);
+  //     });
+  //   }
+  // };
 
   return (
     <>
@@ -184,8 +193,8 @@ const Root = () => {
           handleDuplicatesInCart,
           check,
           filteredByPrice,
-          filterByCategory,
-          filterCategory,
+          // filterByCategory,
+          // filterCategory,
         }}
       >
         {/* <Test /> */}

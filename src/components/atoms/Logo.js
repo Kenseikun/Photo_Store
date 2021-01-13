@@ -18,10 +18,24 @@ const StyledLogo = styled.div`
     border-radius: 50%;
     background-color: ${({ theme }) => theme.colors.violet};
   }
+
+  ${({ inContact }) =>
+    inContact &&
+    css`
+   
+  width: 250px;
+  height: 250px;
+
+
+  &::before {
+       width: 100px;
+    height: 100px;
+
+    `}
 `;
 
-const Logo = ({}) => {
-  return <StyledLogo></StyledLogo>;
+const Logo = ({ inContact }) => {
+  return <StyledLogo inContact={inContact}></StyledLogo>;
 };
 
 export default Logo;

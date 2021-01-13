@@ -1,13 +1,8 @@
 import React from "react";
-
-import DisplayHome from "./components/molecules/DisplayHome";
+import DisplayContact from "./components/molecules/DisplayContact";
 
 const Test = () => {
-  return (
-    <div>
-      <DisplayHome></DisplayHome>
-    </div>
-  );
+  return <DisplayContact></DisplayContact>;
 };
 
 export default Test;
