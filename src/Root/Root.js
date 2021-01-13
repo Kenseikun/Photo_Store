@@ -11,6 +11,7 @@ import { routes } from "../routes";
 
 import Test from "../Test";
 import MainTemplate from "../templates/MainTemplate";
+import { Check } from "@material-ui/icons";
 
 const Root = () => {
   const [initialProducts, setInitialProducts] = useState([...localData]);
@@ -21,6 +22,9 @@ const Root = () => {
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
   const [productsInCartQuantity, setProductsInCartQuantity] = useState(0);
   const [category, setCategory] = useState("all");
+
+  const [check, setCheck] = useState(true);
+  const [filterCategory, setFilterCategory] = useState("all");
 
   const increaseProductsInCartQuantity = () => {
     setProductsInCartQuantity(productsInCartQuantity + 1);
@@ -109,7 +113,56 @@ const Root = () => {
 
     setCart([...mappedProduct]);
 
-    // setProductsInCartQuantity(productsInCartQuantity - productQuantity);
+    // setProductsInCartQuantity(productsInCartQuantity - productQuantity);\
+  };
+
+  const filteredByPrice = (e) => {
+    setCheck(!check);
+
+    const sortedProducts = products.sort((a, b) => {
+      if (check === true) {
+        return a.productPrice - b.productPrice;
+      } else {
+        return b.productPrice - a.productPrice;
+      }
+    });
+    setProducts([...sortedProducts]);
+  };
+
+  const filterByCategory = (e) => {
+    const filter = e.target.value;
+    console.log(filter);
+
+    switch (filter) {
+      case "cameras":
+        const filteredByCameras = products.filter((product) => {
+          if (product.productCategory === "cameras") {
+            return product;
+          }
+          setProducts([...filteredByCameras]);
+        });
+        break;
+      case "lenses":
+        const filteredByLenses = products.filter((product) => {
+          if (product.productCategory === "lenses") {
+            return product;
+          }
+          setProducts([...filteredByLenses]);
+        });
+        break;
+      case "speedlights":
+        const filteredBySpeedlights = products.filter((product) => {
+          if (product.productCategory === "speedlights") {
+            return product;
+          }
+          setProducts([...filteredBySpeedlights]);
+        });
+        break;
+
+      default:
+        setProducts([...initialProducts]);
+        break;
+    }
   };
 
   return (
@@ -129,6 +182,10 @@ const Root = () => {
           cartTotalPrice,
           productsInCartQuantity,
           handleDuplicatesInCart,
+          check,
+          filteredByPrice,
+          filterByCategory,
+          filterCategory,
         }}
       >
         {/* <Test /> */}
