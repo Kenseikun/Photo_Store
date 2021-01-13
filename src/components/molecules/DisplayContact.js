@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Category from "../atoms/Category";
 import Logo from "../atoms/Logo";
 import SocialMedias from "../atoms/SocialMedias";
+import GoogleMap from "../GoogleMap";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,8 +50,9 @@ const DisplayContact = () => {
     <>
       <DIVContactWrapper>
         <DIVLogoWrapper>
-          <Logo inContact></Logo>
-          <PLogoText>Digital & analog cameras</PLogoText>
+          {/* <Logo inContact></Logo>
+          <PLogoText>Digital & analog cameras</PLogoText> */}
+          <GoogleMap></GoogleMap>
         </DIVLogoWrapper>
 
         <DIVFormWrapper>

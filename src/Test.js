@@ -1,8 +1,8 @@
 import React from "react";
-import DisplayContact from "./components/molecules/DisplayContact";
+import GoogleMap from "./components/GoogleMap";
 
 const Test = () => {
-  return <DisplayContact></DisplayContact>;
+  return <GoogleMap></GoogleMap>;
 };
 
 export default Test;
