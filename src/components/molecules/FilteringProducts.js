@@ -1,10 +1,51 @@
-import React from "react";
-import { Checkbox, InputLabel, MenuItem, Select } from "@material-ui/core";
+import React, { useContext } from "react";
+import {
+  Checkbox,
+  InputLabel,
+  MenuItem,
+  Select,
+  FormControl,
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import RootContext from "../../context";
+import { Category } from "@material-ui/icons";
+
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 160,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+
+  menuItem: {
+    backgroundColor: "pink",
+  },
+}));
 
 const FilteringProducts = () => {
-  const context = RootContext;
-  const { check, filteredByPrice, filterCategory, filterByCategory } = context;
+  const context = useContext(RootContext);
+  const {
+    check,
+    handleProductPriceFilterChange,
+    filterCategory,
+    filterByCategory,
+    initialProducts,
+    handleFilterCategorySelectChange,
+  } = context;
+
+  const productsCategories = [
+    "all",
+    ...new Set(
+      initialProducts.map((product) => {
+        return product.productCategory;
+      })
+    ),
+  ];
+
+  console.log(productsCategories);
+  const classes = useStyles();
   return (
     <div>
       <form action="submit">
@@ -15,22 +56,26 @@ const FilteringProducts = () => {
           name="filterByPrice"
           id="filterByPrice"
           color="secondary"
-          value={check}
-          onChange={(e) => filteredByPrice(e)}
+          checked={check}
+          onChange={handleProductPriceFilterChange}
         ></Checkbox>
-
-        <InputLabel htmlFor="select">Filter by Category</InputLabel>
-        <Select
-          id="select"
-          name="filterByCategory"
-          value={filterCategory}
-          onChange={(e) => filterByCategory(e)}
-        >
-          <MenuItem value="all">All</MenuItem>
-          <MenuItem value="cameras">Cameras</MenuItem>
-          <MenuItem value="lenses">Lenses</MenuItem>
-          <MenuItem value="speedlights">Speedlights</MenuItem>
-        </Select>
+        <FormControl className={classes.formControl}>
+          <InputLabel id="filterByCategory">Filter by Category</InputLabel>
+          <Select
+            id="filterByCategory"
+            name="filterByCategory"
+            value={filterCategory}
+            onChange={handleFilterCategorySelectChange}
+          >
+            {productsCategories.map((category) => {
+              return (
+                <MenuItem value={category} className={classes.menuItem}>
+                  {category}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
       </form>
     </div>
   );

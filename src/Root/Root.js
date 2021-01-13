@@ -23,7 +23,7 @@ const Root = () => {
   const [productsInCartQuantity, setProductsInCartQuantity] = useState(0);
   const [category, setCategory] = useState("all");
 
-  const [check, setCheck] = useState(true);
+  const [check, setCheck] = useState(false);
   const [filterCategory, setFilterCategory] = useState("all");
 
   const increaseProductsInCartQuantity = () => {
@@ -116,9 +116,14 @@ const Root = () => {
     // setProductsInCartQuantity(productsInCartQuantity - productQuantity);\
   };
 
+  const handleProductPriceFilterChange = (e) => {
+    setCheck(e.target.checked);
+  };
+
   const filteredByPrice = (e) => {
     // setCheck(!check);
-
+    console.log("TUTAJ");
+    console.log(check);
     const sortedProducts = products.sort((a, b) => {
       if (check === true) {
         return a.productPrice - b.productPrice;
@@ -129,50 +134,76 @@ const Root = () => {
     setProducts([...sortedProducts]);
   };
 
-  // const filterByCategory = (e) => {
-  //   const filter = e.target.value;
-  //   console.log(filter);
+  useEffect(() => {
+    filteredByPrice();
+  }, [check]);
 
-  //   switch (filter) {
-  //     case "cameras":
-  //       const filteredByCameras = products.filter((product) => {
-  //         if (product.productCategory === "cameras") {
-  //           return product;
-  //         }
-  //         setProducts([...filteredByCameras]);
-  //       });
-  //       break;
-  //     case "lenses":
-  //       const filteredByLenses = products.filter((product) => {
-  //         if (product.productCategory === "lenses") {
-  //           return product;
-  //         }
-  //         setProducts([...filteredByLenses]);
-  //       });
-  //       break;
-  //     case "speedlights":
-  //       const filteredBySpeedlights = products.filter((product) => {
-  //         if (product.productCategory === "speedlights") {
-  //           return product;
-  //         }
-  //         setProducts([...filteredBySpeedlights]);
-  //       });
-  //       break;
+  const handleFilterCategorySelectChange = (e) => {
+    setFilterCategory(e.target.value);
+  };
 
-  //     default:
-  //       setProducts([...initialProducts]);
-  //       break;
-  //   }
+  const filterByCategory2 = () => {
+    if (filterCategory !== "all") {
+      const filteredProducts = initialProducts.filter(
+        (product) => product.productCategory === filterCategory
+      );
+      setProducts([...filteredProducts]);
+    } else {
+      setProducts([...initialProducts]);
+    }
+  };
 
-  //   if (filter === "cameras") {
-  //     const filteredByCameras = products.filter((product) => {
-  //       if (product.productCategory === "cameras") {
-  //         return product;
-  //       }
-  //       setProducts([...filteredByCameras]);
-  //     });
-  //   }
-  // };
+  useEffect(() => {
+    filterByCategory2();
+  }, [filterCategory]);
+
+  const filterByCategory = (e) => {
+    const filter = e.target.value;
+    console.log(filter);
+
+    switch (filter) {
+      case "cameras":
+        const filteredByCameras = initialProducts.filter((product) => {
+          if (product.productCategory === "cameras") {
+            return product;
+          }
+        });
+        setProducts([...filteredByCameras]);
+
+        break;
+      case "lenses":
+        const filteredByLenses = initialProducts.filter((product) => {
+          if (product.productCategory === "lenses") {
+            return product;
+          }
+        });
+        setProducts([...filteredByLenses]);
+
+        break;
+      case "speedlights":
+        const filteredBySpeedlights = initialProducts.filter((product) => {
+          if (product.productCategory === "speedlights") {
+            return product;
+          }
+        });
+        setProducts([...filteredBySpeedlights]);
+
+        break;
+
+      default:
+        setProducts([...initialProducts]);
+        break;
+    }
+
+    // if (filter === "cameras") {
+    //   const filteredByCameras = products.filter((product) => {
+    //     if (product.productCategory === "cameras") {
+    //       return product;
+    //     }
+    //     setProducts([...filteredByCameras]);
+    //   });
+    // }
+  };
 
   return (
     <>
@@ -193,7 +224,10 @@ const Root = () => {
           handleDuplicatesInCart,
           check,
           filteredByPrice,
-          // filterByCategory,
+          handleProductPriceFilterChange,
+          initialProducts,
+          filterByCategory,
+          handleFilterCategorySelectChange,
           // filterCategory,
         }}
       >
