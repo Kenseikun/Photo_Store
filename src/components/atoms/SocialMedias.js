@@ -11,6 +11,14 @@ const DisplayIconsWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.violet};
   background-color: transparent;
   margin: 20px 0px;
+
+  ${({ inContact }) =>
+    inContact &&
+    css`
+      position: absolute;
+      bottom: 0;
+      right: 40px;
+    `}
 `;
 
 const Icons = styled.img`
@@ -21,8 +29,6 @@ const Icons = styled.img`
   &:hover {
     transform: translateY(-50%);
   }
-
-  ${({ inContact }) => inContact && css``}
 `;
 
 const SocialMedias = ({ inContact }) => {

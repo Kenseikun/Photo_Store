@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const DIVcategoryWrapper = styled.div``;
 const DIVcategorySign = styled.div`
@@ -15,9 +15,17 @@ const DIVcategorySign = styled.div`
   font-size: 1.3em;
   background-color: ${({ inContact, theme }) =>
     inContact ? theme.colors.blue : theme.colors.violet};
+
+  ${({ inContact }) =>
+    inContact &&
+    css`
+      position: absolute;
+      top: 10px;
+      right: 0;
+    `}
 `;
 
-const Category = ({ children, category: all, inContact }) => {
+const Category = ({ children, inContact }) => {
   return (
     <DIVcategoryWrapper>
       <DIVcategorySign inContact={inContact}>{children}</DIVcategorySign>
