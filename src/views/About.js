@@ -1,10 +1,11 @@
 import React from "react";
+import AboutConnected from "../components/organisms/AboutConnected";
 // import Test from "../Test";
 
 const About = () => {
   return (
     <div>
-      <h2>About</h2>
+      <AboutConnected inAbout />
     </div>
   );
 };

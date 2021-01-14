@@ -23,12 +23,23 @@ const DIVcategorySign = styled.div`
       top: 10px;
       right: 0;
     `}
+
+  ${({ inAbout }) =>
+    inAbout &&
+    css`
+      position: absolute;
+      top: 10px;
+      right: 0;
+      background-color: ${({ theme }) => theme.colors.red};
+    `}
 `;
 
-const Category = ({ children, inContact }) => {
+const Category = ({ children, inContact, inAbout }) => {
   return (
     <DIVcategoryWrapper>
-      <DIVcategorySign inContact={inContact}>{children}</DIVcategorySign>
+      <DIVcategorySign inContact={inContact} inAbout={inAbout}>
+        {children}
+      </DIVcategorySign>
     </DIVcategoryWrapper>
   );
 };

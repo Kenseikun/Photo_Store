@@ -78,28 +78,32 @@ const DisplayContact = () => {
             className={classes.root}
             noValidate
             autoComplete="off"
-            type="submit"
+            onSubmit="submit"
           >
             <Input
               placeholder="Full name"
               type="text"
               required
               style={inputsStyle}
+              name="contactNameInput"
             />
             <Input
               placeholder="Email"
+              name="contactEmailInput"
               type="email"
               required
               style={inputsStyle}
             />
             <Input
               placeholder="Phone"
+              name="contactPhoneInput"
               type="number"
               required
               style={inputsStyle}
             />
             <TextareaAutosize
-              label="Tap your message"
+              placeholder="Tap your message..."
+              name="contactMessageInput"
               style={textareaStyle}
               required
               rows="10"

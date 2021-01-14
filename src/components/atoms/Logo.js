@@ -32,10 +32,21 @@ const StyledLogo = styled.div`
     height: 100px;
 
     `}
+
+  ${({ inAbout }) =>
+    inAbout &&
+    css`
+      height: 300px;
+      width: 300px;
+      &::before {
+        width: 120px;
+        height: 120px;
+      }
+    `}
 `;
 
-const Logo = ({ inContact }) => {
-  return <StyledLogo inContact={inContact}></StyledLogo>;
+const Logo = ({ inContact, inAbout }) => {
+  return <StyledLogo inContact={inContact} inAbout={inAbout}></StyledLogo>;
 };
 
 export default Logo;

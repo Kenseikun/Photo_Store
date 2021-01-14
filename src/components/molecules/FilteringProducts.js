@@ -6,9 +6,10 @@ import {
   MenuItem,
   Select,
   FormControl,
+  FormControlLabel,
+  Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { red } from "@material-ui/core/colors";
 import RootContext from "../../context";
 
 const DIVForm = styled.form`
@@ -38,10 +39,9 @@ const useStyles = makeStyles((theme) => ({
 const FilteringProducts = () => {
   const context = useContext(RootContext);
   const {
-    check,
+    freeDeliveryCheckbox,
     handleProductPriceFilterChange,
     filterCategory,
-    filterByCategory,
     initialProducts,
     handleFilterCategorySelectChange,
   } = context;
@@ -66,16 +66,17 @@ const FilteringProducts = () => {
           type="checkbox"
           name="filterByPrice"
           id="filterByPrice"
-          color="primary"
-          checked={check}
+          color="secondary"
+          checked={freeDeliveryCheckbox}
           onChange={handleProductPriceFilterChange}
-        ></Checkbox>
+        />
         <FormControl className={classes.formControl}>
           {/* <InputLabel id="filterByCategory">Filter by Category</InputLabel> */}
           <Select
             id="filterByCategory"
             name="filterByCategory"
             value={filterCategory}
+            defaultValue={productsCategories[0]}
             onChange={handleFilterCategorySelectChange}
           >
             {productsCategories.map((category) => {

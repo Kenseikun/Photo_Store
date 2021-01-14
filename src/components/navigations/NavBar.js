@@ -47,7 +47,7 @@ const NavBar = () => {
       </Link>
       <DisplayUl>
         <DisplayLi>
-          <NavLink to={routes.home} activeStyle={activeNavLinkStyle}>
+          <NavLink exact to={routes.home} activeStyle={activeNavLinkStyle}>
             Home
           </NavLink>
         </DisplayLi>

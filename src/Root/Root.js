@@ -24,7 +24,7 @@ const Root = () => {
   const [category, setCategory] = useState("all");
 
   const [search, setSearch] = useState("");
-  const [check, setCheck] = useState(false);
+  const [freeDeliveryCheckbox, setFreeDeliveryCheckbox] = useState(false);
   const [filterCategory, setFilterCategory] = useState("all");
 
   const increaseProductsInCartQuantity = () => {
@@ -117,8 +117,30 @@ const Root = () => {
     // setProductsInCartQuantity(productsInCartQuantity - productQuantity);\
   };
 
+  const filterProducts = () => {
+    let tempProducts = [...initialProducts];
+
+    if (filterCategory !== "all") {
+      tempProducts = tempProducts.filter(
+        (product) => product.productCategory === filterCategory
+      );
+    }
+
+    if (freeDeliveryCheckbox) {
+      tempProducts = tempProducts.filter(
+        (product) => product.freeDelivery === true
+      );
+    }
+
+    setProducts([...tempProducts]);
+  };
+
+  useEffect(() => {
+    filterProducts();
+  }, [filterCategory, freeDeliveryCheckbox]);
+
   const handleProductPriceFilterChange = (e) => {
-    setCheck(e.target.checked);
+    setFreeDeliveryCheckbox(e.target.checked);
   };
 
   const filteredByPrice = (e) => {
@@ -132,21 +154,27 @@ const Root = () => {
     //   }
     // });
 
-    if (check === true) {
-      const filteredProducts = products.filter((product) => {
+    if (freeDeliveryCheckbox === true) {
+      const freeDeliveryProducts = products.filter((product) => {
         if (product.freeDelivery === true) {
           return product;
         }
       });
-      setProducts([...filteredProducts]);
+
+      setProducts([...freeDeliveryProducts]);
     } else {
-      setProducts([...initialProducts]);
+      const productsWithoutFreeDelivery = products.filter((product) => {
+        if (product.freeDelivery === false) {
+          return product;
+        }
+      });
+      setProducts([...productsWithoutFreeDelivery]);
     }
   };
 
-  useEffect(() => {
-    filteredByPrice();
-  }, [check]);
+  // useEffect(() => {
+  //   filteredByPrice();
+  // }, [freeDeliveryCheckbox]);
 
   const handleFilterCategorySelectChange = (e) => {
     setFilterCategory(e.target.value);
@@ -163,9 +191,9 @@ const Root = () => {
     }
   };
 
-  useEffect(() => {
-    filterByCategory2();
-  }, [filterCategory]);
+  // useEffect(() => {
+  //   filterByCategory2();
+  // }, [filterCategory]);
 
   const filterByCategory = (e) => {
     const filter = e.target.value;
@@ -216,6 +244,7 @@ const Root = () => {
   };
 
   const handleSearch = (e) => {
+    console.log(e.target.value);
     setSearch(e.target.value);
   };
 
@@ -236,7 +265,7 @@ const Root = () => {
           cartTotalPrice,
           productsInCartQuantity,
           handleDuplicatesInCart,
-          check,
+          freeDeliveryCheckbox,
           filteredByPrice,
           search,
           handleSearch,
