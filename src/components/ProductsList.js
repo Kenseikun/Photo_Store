@@ -16,6 +16,7 @@ const ProductsList = () => {
           productDescription,
           productCategory,
           productImage,
+          freeDelivery,
         } = product;
         return (
           <li key={productId}>
@@ -27,6 +28,7 @@ const ProductsList = () => {
               productCategory={productCategory}
               productImage={productImage}
               productId={productId}
+              freeDelivery={freeDelivery}
             />
           </li>
         );

@@ -23,6 +23,7 @@ const Root = () => {
   const [productsInCartQuantity, setProductsInCartQuantity] = useState(0);
   const [category, setCategory] = useState("all");
 
+  const [search, setSearch] = useState("");
   const [check, setCheck] = useState(false);
   const [filterCategory, setFilterCategory] = useState("all");
 
@@ -122,16 +123,25 @@ const Root = () => {
 
   const filteredByPrice = (e) => {
     // setCheck(!check);
-    console.log("TUTAJ");
-    console.log(check);
-    const sortedProducts = products.sort((a, b) => {
-      if (check === true) {
-        return a.productPrice - b.productPrice;
-      } else {
-        return b.productPrice - a.productPrice;
-      }
-    });
-    setProducts([...sortedProducts]);
+
+    // const sortedProducts = products.sort((a, b) => {
+    //   if (check === true) {
+    //     return a.productPrice - b.productPrice;
+    //   } else {
+    //     return b.productPrice - a.productPrice;
+    //   }
+    // });
+
+    if (check === true) {
+      const filteredProducts = products.filter((product) => {
+        if (product.freeDelivery === true) {
+          return product;
+        }
+      });
+      setProducts([...filteredProducts]);
+    } else {
+      setProducts([...initialProducts]);
+    }
   };
 
   useEffect(() => {
@@ -205,6 +215,10 @@ const Root = () => {
     // }
   };
 
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
   return (
     <>
       <RootContext.Provider
@@ -224,6 +238,8 @@ const Root = () => {
           handleDuplicatesInCart,
           check,
           filteredByPrice,
+          search,
+          handleSearch,
           handleProductPriceFilterChange,
           initialProducts,
           filterByCategory,

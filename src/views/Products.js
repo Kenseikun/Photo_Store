@@ -10,12 +10,20 @@ const DIVproductsWrapper = styled.div`
   display: flex;
 `;
 
+const DIVFilteringProductsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const Products = () => {
   const context = useContext(RootContext);
   const { category } = context;
   return (
     <>
-      <FilteringProducts />
+      <DIVFilteringProductsWrapper>
+        <FilteringProducts />
+      </DIVFilteringProductsWrapper>
       <DIVproductsWrapper>
         <ProductsList />
         <Category>{category}</Category>

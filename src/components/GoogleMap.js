@@ -1,10 +1,21 @@
 import React, { Component } from "react";
-// import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
-import img from "../assets/icons/fb.png";
 
 import GoogleMapReact from "google-map-react";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const AnyReactComponent = ({ text }) => (
+  <div
+    style={{
+      width: "0",
+      height: "0",
+      borderLeft: "15px solid transparent",
+      borderRight: "15px solid transparent",
+
+      borderTop: "30px solid #ac003e",
+    }}
+  >
+    {text}
+  </div>
+);
 
 class GoogleMap extends Component {
   static defaultProps = {
@@ -29,8 +40,7 @@ class GoogleMap extends Component {
           <AnyReactComponent
             lat={52.237049}
             lng={21.017532}
-            text="I am here"
-            icon={img}
+            // text="I am here"
           />
         </GoogleMapReact>
       </div>

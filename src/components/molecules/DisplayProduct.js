@@ -27,6 +27,12 @@ const DisplayProductPrice = styled.p`
 const DisplayProductName = styled.p`
   font-weight: bold;
 `;
+
+const DisplayProductDelivery = styled.p`
+  color: ${({ theme }) => theme.colors.red};
+  text-transform: uppercase;
+  font-weight: 800;
+`;
 const DisplayProductDescription = styled.p`
   font-weight: 100;
 `;
@@ -38,6 +44,7 @@ const DisplayProduct = ({
   productDescription,
   productCategory,
   productImage,
+  freeDelivery,
 }) => {
   const context = useContext(RootContext);
   const { handleAddProductToCart, handleDuplicatesInCart } = context;
@@ -48,6 +55,11 @@ const DisplayProduct = ({
       <DisplayDetailsWrapper>
         <DisplayProductPrice>{productPrice} PLN</DisplayProductPrice>
         <DisplayProductName>{productName}</DisplayProductName>
+        {freeDelivery === true ? (
+          <DisplayProductDelivery>Free Delivery</DisplayProductDelivery>
+        ) : (
+          ""
+        )}
         <Button
           type={productCategory}
           onClickFn={() => {

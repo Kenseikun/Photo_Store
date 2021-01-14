@@ -90,20 +90,20 @@ const DisplayProductInCart = () => {
                     className={classes.button}
                     size="small"
                     variant="contained"
-                    color="primary"
-                    onClick={() => handleProductQuantityInCartAdd(productId)}
-                  >
-                    <Add />
-                  </Button>
-                  <Button
-                    className={classes.button}
-                    size="small"
-                    variant="contained"
                     color="secondary"
                     onClick={() => handleProductQuantityInCartRemove(productId)}
                     disabled={productQuantity === 1 ? true : false}
                   >
                     <Remove />
+                  </Button>
+                  <Button
+                    className={classes.button}
+                    size="small"
+                    variant="contained"
+                    color="primary"
+                    onClick={() => handleProductQuantityInCartAdd(productId)}
+                  >
+                    <Add />
                   </Button>
                 </ButtonGroup>
 

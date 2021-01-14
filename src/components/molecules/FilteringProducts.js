@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import styled from "styled-components";
 import {
   Checkbox,
   InputLabel,
@@ -10,17 +11,27 @@ import { makeStyles } from "@material-ui/core/styles";
 import RootContext from "../../context";
 import { Category } from "@material-ui/icons";
 
+const DIVForm = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 160,
+    backgroundColor: "#46287c",
+    borderRadius: "3px",
+    padding: "2px 5px",
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
 
   menuItem: {
-    backgroundColor: "pink",
+    backgroundColor: "#391f49",
+    color: "#fff",
   },
 }));
 
@@ -48,19 +59,19 @@ const FilteringProducts = () => {
   const classes = useStyles();
   return (
     <div>
-      <form action="submit">
-        <label htmlFor="filterByPrice">filter by price </label>
+      <DIVForm action="submit">
+        <label htmlFor="filterByPrice">Free delivery</label>
 
         <Checkbox
           type="checkbox"
           name="filterByPrice"
           id="filterByPrice"
-          color="secondary"
+          color="primary"
           checked={check}
           onChange={handleProductPriceFilterChange}
         ></Checkbox>
         <FormControl className={classes.formControl}>
-          <InputLabel id="filterByCategory">Filter by Category</InputLabel>
+          {/* <InputLabel id="filterByCategory">Filter by Category</InputLabel> */}
           <Select
             id="filterByCategory"
             name="filterByCategory"
@@ -76,7 +87,7 @@ const FilteringProducts = () => {
             })}
           </Select>
         </FormControl>
-      </form>
+      </DIVForm>
     </div>
   );
 };
