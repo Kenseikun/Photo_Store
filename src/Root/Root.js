@@ -26,6 +26,9 @@ const Root = () => {
   const [search, setSearch] = useState("");
   const [freeDeliveryCheckbox, setFreeDeliveryCheckbox] = useState(false);
   const [filterCategory, setFilterCategory] = useState("all");
+  const [maxProductPrice, setMaxProductPrice] = useState(0);
+  const [filteredPrice, setFilteredPrice] = useState(0);
+  const [productSearchValue, setProductSearchValue] = useState("");
 
   const increaseProductsInCartQuantity = () => {
     setProductsInCartQuantity(productsInCartQuantity + 1);
@@ -132,12 +135,23 @@ const Root = () => {
       );
     }
 
+    tempProducts = tempProducts.filter(
+      (product) => product.productPrice <= filteredPrice
+    );
+    if (productSearchValue.length !== 0) {
+      tempProducts = tempProducts.filter((product) => {
+        const productName = product.productName.toLowerCase();
+        const searchValue = productSearchValue.toLowerCase();
+        return productName.slice(0, searchValue.length) === searchValue;
+      });
+    }
+
     setProducts([...tempProducts]);
   };
 
   useEffect(() => {
     filterProducts();
-  }, [filterCategory, freeDeliveryCheckbox]);
+  }, [filterCategory, freeDeliveryCheckbox, filteredPrice, productSearchValue]);
 
   const handleProductPriceFilterChange = (e) => {
     setFreeDeliveryCheckbox(e.target.checked);
@@ -248,6 +262,28 @@ const Root = () => {
     setSearch(e.target.value);
   };
 
+  const handleRangePriceChange = (e) => {
+    setFilteredPrice(e.target.value);
+  };
+
+  const setMaxPriceOfProduct = () => {
+    const maxPrice = initialProducts.map((product) => {
+      return product.productPrice;
+    });
+
+    const productMaxPrice = Math.max(...maxPrice);
+
+    setMaxProductPrice(productMaxPrice);
+    setFilteredPrice(productMaxPrice);
+  };
+  useEffect(() => {
+    setMaxPriceOfProduct();
+  }, []);
+
+  const hangleProductSearchChange = (e) => {
+    setProductSearchValue(e.target.value);
+  };
+
   return (
     <>
       <RootContext.Provider
@@ -273,6 +309,11 @@ const Root = () => {
           initialProducts,
           filterByCategory,
           handleFilterCategorySelectChange,
+          maxProductPrice,
+          filteredPrice,
+          handleRangePriceChange,
+          productSearchValue,
+          hangleProductSearchChange,
           // filterCategory,
         }}
       >

@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.6.0",
     "axios": "^0.21.1",
     "firebase": "^8.2.1",
+    "formik": "^2.2.6",
     "google-map-react": "^2.1.9",
     "google-maps-react": "^2.0.6",
     "react": "^17.0.1",
@@ -17,7 +18,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "styled-components": "^5.2.1",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "yup": "^0.32.8"
   },
   "scripts": {
     "start": "BROWSER='google-chrome-stable' react-scripts start",

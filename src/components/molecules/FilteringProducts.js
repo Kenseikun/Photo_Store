@@ -16,6 +16,38 @@ const DIVForm = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 30px;
+`;
+
+const Input = styled.input`
+  background-color: #040d21;
+  outline: none;
+  border: none;
+  width: 250px;
+  padding: 10px 15px;
+  border-radius: 5px;
+`;
+
+const InputRange = styled.input`
+  -webkit-appearance: none;
+  width: 100%;
+  background: #040d21;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.colors.violet};
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid black;
+  }
 `;
 
 const useStyles = makeStyles((theme) => ({
@@ -44,6 +76,11 @@ const FilteringProducts = () => {
     filterCategory,
     initialProducts,
     handleFilterCategorySelectChange,
+    maxProductPrice,
+    filteredPrice,
+    handleRangePriceChange,
+    productSearchValue,
+    hangleProductSearchChange,
   } = context;
 
   const productsCategories = [
@@ -60,6 +97,21 @@ const FilteringProducts = () => {
   return (
     <div>
       <DIVForm action="submit">
+        <Input
+          type="search"
+          placeholder="search product..."
+          value={productSearchValue}
+          onChange={hangleProductSearchChange}
+        />
+        <label htmlFor="priceInput">Price: {filteredPrice}PLN</label>
+        <InputRange
+          type="range"
+          id="priceInput"
+          min={0}
+          max={maxProductPrice}
+          value={filteredPrice}
+          onChange={handleRangePriceChange}
+        />
         <label htmlFor="filterByPrice">Free delivery</label>
 
         <Checkbox

@@ -6,13 +6,15 @@ import Category from "../atoms/Category";
 import Logo from "../atoms/Logo";
 import SocialMedias from "../atoms/SocialMedias";
 import GoogleMap from "../GoogleMap";
+import { Formik, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
       width: "25ch",
-      color: "gray",
+      color: "grey",
     },
   },
 }));
@@ -42,7 +44,7 @@ const DIVFormWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.violet};
 `;
 
-const Form = styled.form`
+const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,7 +61,14 @@ const textareaStyle = {
   margin: "30px auto",
   padding: "10px",
   outline: "none",
+  color: "black",
 };
+
+const contactValidationSchema = Yup.object().shape({
+  fullName: Yup.string().required("Enter your full name"),
+  email: Yup.string().required("Enter your email").email("Invalid email"),
+  message: Yup.string().required("enter your message"),
+});
 
 const DisplayContact = () => {
   const classes = useStyles();
@@ -74,44 +83,64 @@ const DisplayContact = () => {
 
         <DIVFormWrapper>
           <Category inContact>Contact</Category>
-          <Form
-            className={classes.root}
-            noValidate
-            autoComplete="off"
-            onSubmit="submit"
+
+          <Formik
+            initialValues={{
+              fullName: "",
+              email: "",
+              message: "",
+            }}
+            validationSchema={contactValidationSchema}
+            onSubmit={(values) => {
+              console.log(values);
+            }}
           >
-            <Input
-              placeholder="Full name"
-              type="text"
-              required
-              style={inputsStyle}
-              name="contactNameInput"
-            />
-            <Input
-              placeholder="Email"
-              name="contactEmailInput"
-              type="email"
-              required
-              style={inputsStyle}
-            />
-            <Input
-              placeholder="Phone"
-              name="contactPhoneInput"
-              type="number"
-              required
-              style={inputsStyle}
-            />
-            <TextareaAutosize
-              placeholder="Tap your message..."
-              name="contactMessageInput"
-              style={textareaStyle}
-              required
-              rows="10"
-            ></TextareaAutosize>
-            <Button variant="contained" color="primary" type="submit">
-              Send
-            </Button>
-          </Form>
+            {({ values, handleChange }) => (
+              <StyledForm>
+                <Input
+                  placeholder="Full name"
+                  type="text"
+                  style={inputsStyle}
+                  name="fullName"
+                  value={values.fullName}
+                  onChange={handleChange}
+                />
+                <div style={{ color: "red" }}>
+                  <ErrorMessage name="fullName" />
+                </div>
+                <Input
+                  placeholder="Email"
+                  name="email"
+                  type="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  style={inputsStyle}
+                />
+                <ErrorMessage name="email" />
+
+                {/* <Input
+                  placeholder="Phone"
+                  name="contactPhoneInput"
+                  type="number"
+                  style={inputsStyle}
+                /> */}
+                <TextareaAutosize
+                  placeholder="Tap your message..."
+                  name="message"
+                  style={textareaStyle}
+                  rows="10"
+                  value={values.message}
+                  onChange={handleChange}
+                />
+                <ErrorMessage name="message" />
+
+                <Button variant="contained" color="primary" type="submit">
+                  Send
+                </Button>
+              </StyledForm>
+            )}
+          </Formik>
+
           <SocialMedias inContact />
         </DIVFormWrapper>
       </DIVContactWrapper>
