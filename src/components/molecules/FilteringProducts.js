@@ -1,14 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import {
-  Checkbox,
-  InputLabel,
-  MenuItem,
-  Select,
-  FormControl,
-  FormControlLabel,
-  Typography,
-} from "@material-ui/core";
+import { Checkbox, MenuItem, Select, FormControl } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import RootContext from "../../context";
 
@@ -29,24 +21,85 @@ const Input = styled.input`
 `;
 
 const InputRange = styled.input`
+  width: 100px;
+  margin: 3.3px 0;
+  background-color: transparent;
   -webkit-appearance: none;
-  width: 100%;
-  background: #040d21;
-
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    background: ${({ theme }) => theme.colors.violet};
-    cursor: pointer;
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  }
 
   &:focus {
     outline: none;
-    border: 1px solid black;
+  }
+  &::-webkit-slider-runnable-track {
+    background: #b271a9;
+    border: 0.2px solid #010101;
+    border-radius: 1.3px;
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+  }
+  &::-webkit-slider-thumb {
+    margin-top: -3.5px;
+    width: 15px;
+    height: 15px;
+    background: #ffffff;
+    border: 1px solid #8d6300;
+    border-radius: 50px;
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+  &:focus::-webkit-slider-runnable-track {
+    background: #e6d1e3;
+  }
+  &::-moz-range-track {
+    background: #b271a9;
+    border: 0.2px solid #010101;
+    border-radius: 1.3px;
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+  }
+  &::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #ffffff;
+    border: 1px solid #8d6300;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  &::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 4.3px 0;
+    color: transparent;
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+  }
+  &::-ms-fill-lower {
+    background: #5d3257;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+  }
+  &::-ms-fill-upper {
+    background: #b271a9;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+  }
+  &::-ms-thumb {
+    width: 15px;
+    height: 15px;
+    background: #ffffff;
+    border: 1px solid #8d6300;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 0px;
+    /*Needed to keep the Edge thumb centred*/
+  }
+  &:focus::-ms-fill-lower {
+    background: #b271a9;
+  }
+  &:focus::-ms-fill-upper {
+    background: #e6d1e3;
   }
 `;
 

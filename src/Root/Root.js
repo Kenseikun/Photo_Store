@@ -23,12 +23,15 @@ const Root = () => {
   const [productsInCartQuantity, setProductsInCartQuantity] = useState(0);
   const [category, setCategory] = useState("all");
 
-  const [search, setSearch] = useState("");
   const [freeDeliveryCheckbox, setFreeDeliveryCheckbox] = useState(false);
   const [filterCategory, setFilterCategory] = useState("all");
   const [maxProductPrice, setMaxProductPrice] = useState(0);
   const [filteredPrice, setFilteredPrice] = useState(0);
   const [productSearchValue, setProductSearchValue] = useState("");
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [popperInputSearchValue, setPopperInputSearchValue] = useState("");
+  const [isPopperOpen, setIsPopperOpen] = useState(false);
+  const [popperProducts, setPopperProducts] = useState([]);
 
   const increaseProductsInCartQuantity = () => {
     setProductsInCartQuantity(productsInCartQuantity + 1);
@@ -257,11 +260,6 @@ const Root = () => {
     // }
   };
 
-  const handleSearch = (e) => {
-    console.log(e.target.value);
-    setSearch(e.target.value);
-  };
-
   const handleRangePriceChange = (e) => {
     setFilteredPrice(e.target.value);
   };
@@ -284,6 +282,38 @@ const Root = () => {
     setProductSearchValue(e.target.value);
   };
 
+  const showAndHidePopper = (e) => {
+    setAnchorEl(e.currentTarget);
+    setPopperInputSearchValue(e.target.value);
+
+    console.log(e.target.value);
+  };
+
+  useEffect(() => {
+    if (popperInputSearchValue.length !== 0) {
+      setIsPopperOpen(true);
+    } else {
+      setIsPopperOpen(false);
+    }
+  }, [popperInputSearchValue]);
+
+  const filterProductsInPopper = () => {
+    const filteredProducts = initialProducts.filter((product) => {
+      const productName = product.productName.toLowerCase();
+      const popperInputSearchValueLowerCase = popperInputSearchValue.toLowerCase();
+      return (
+        productName.slice(0, popperInputSearchValue.length) ===
+        popperInputSearchValueLowerCase
+      );
+    });
+
+    setPopperProducts([...filteredProducts]);
+  };
+
+  useEffect(() => {
+    filterProductsInPopper();
+  }, [popperInputSearchValue]);
+
   return (
     <>
       <RootContext.Provider
@@ -303,8 +333,6 @@ const Root = () => {
           handleDuplicatesInCart,
           freeDeliveryCheckbox,
           filteredByPrice,
-          search,
-          handleSearch,
           handleProductPriceFilterChange,
           initialProducts,
           filterByCategory,
@@ -314,6 +342,11 @@ const Root = () => {
           handleRangePriceChange,
           productSearchValue,
           hangleProductSearchChange,
+          anchorEl,
+          popperInputSearchValue,
+          isPopperOpen,
+          showAndHidePopper,
+          popperProducts,
           // filterCategory,
         }}
       >

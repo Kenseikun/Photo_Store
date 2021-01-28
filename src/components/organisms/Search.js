@@ -14,15 +14,15 @@ const Input = styled.input`
 
 const Search = () => {
   const context = useContext(RootContext);
-  const { search, handleSearch } = context;
+  const { showAndHidePopper, popperInputSearchValue } = context;
   return (
     <Input
       type="search"
       placeholder="Search....."
       results="5"
       name="productSearchInput"
-      onChange={(e) => handleSearch(e)}
-      value={search}
+      onChange={showAndHidePopper}
+      value={popperInputSearchValue}
     />
   );
 };

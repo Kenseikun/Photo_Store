@@ -15,9 +15,6 @@ const LIproduct = styled.li`
 const ProductWrapper = styled.div`
   width: 100%;
   height: 100%;
-  /* display: flex;
-  justify-content: space-around;
-  align-items: center; */
   margin: 10px auto;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
