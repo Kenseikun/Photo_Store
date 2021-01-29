@@ -52,6 +52,10 @@ const Root = () => {
     const filteredProduct = products.find((product) => {
       return product.productId === productId;
     });
+    if (filteredProduct.freeDelivery === true) {
+      let deliveryValue = filteredProduct.productPrice * 0.1;
+      filteredProduct.productPrice -= deliveryValue;
+    }
     increaseProductsInCartQuantity();
     setCart([...new Set([...cart, filteredProduct])]);
   };

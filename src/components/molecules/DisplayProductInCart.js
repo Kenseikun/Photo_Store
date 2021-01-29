@@ -30,10 +30,16 @@ const ProductDescriptionWrapper = styled.div`
   align-items: center;
   gap: 20px;
   height: 100%;
+  width: 200px;
 `;
 const ProductPrice = styled.p`
   ${({ theme }) => theme.fontFamily.extra};
   font-weight: 500;
+`;
+
+const ProductFreeDelivery = styled.span`
+  color: ${({ theme }) => theme.colors.red};
+  font-weight: 600;
 `;
 
 const ProductName = styled.p`
@@ -73,13 +79,21 @@ const DisplayProductInCart = () => {
             productName,
             productQuantity,
             productCategory,
+            freeDelivery,
           } = product;
           return (
             <LIproduct>
               <ProductWrapper>
                 <ProductShow img={productImage} type={productCategory} inCart />
                 <ProductDescriptionWrapper>
-                  <ProductPrice>{productPrice} PLN</ProductPrice>
+                  {freeDelivery ? (
+                    <ProductPrice>
+                      {productPrice} PLN{" "}
+                      <ProductFreeDelivery>- 10% delivery</ProductFreeDelivery>
+                    </ProductPrice>
+                  ) : (
+                    <ProductPrice>{productPrice} PLN</ProductPrice>
+                  )}
                   <ProductName>{productName}</ProductName>
                 </ProductDescriptionWrapper>
                 <ButtonGroup>
