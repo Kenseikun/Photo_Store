@@ -15,18 +15,22 @@ const StyledButton = styled.button`
   outline: none;
   color: white;
 
+  &:hover {
+    opacity: 0.8;
+  }
+
   ${({ cartBtn }) =>
     cartBtn &&
     css`
-      padding: 8px 15px;
+      padding: 10px 15px;
       background-image: url(${({ icon }) => icon});
       background-repeat: no-repeat;
       background-size: 70%;
       background-position: 50% 40%;
       background-color: crimson;
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
     `}
 
   ${({ inHome }) =>

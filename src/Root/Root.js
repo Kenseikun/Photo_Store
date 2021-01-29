@@ -11,7 +11,6 @@ import { routes } from "../routes";
 
 import Test from "../Test";
 import MainTemplate from "../templates/MainTemplate";
-import { Check } from "@material-ui/icons";
 
 const Root = () => {
   const [initialProducts, setInitialProducts] = useState([...localData]);
@@ -347,7 +346,6 @@ const Root = () => {
           isPopperOpen,
           showAndHidePopper,
           popperProducts,
-          // filterCategory,
         }}
       >
         {/* <Test /> */}
