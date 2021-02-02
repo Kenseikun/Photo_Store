@@ -80,6 +80,7 @@ const DisplayProductInCart = () => {
             productQuantity,
             productCategory,
             freeDelivery,
+            discountedProductPrice,
           } = product;
           return (
             <LIproduct>
@@ -88,8 +89,15 @@ const DisplayProductInCart = () => {
                 <ProductDescriptionWrapper>
                   {freeDelivery ? (
                     <ProductPrice>
-                      {productPrice} PLN{" "}
-                      <ProductFreeDelivery>- 10% delivery</ProductFreeDelivery>
+                      <span style={{ textDecoration: "line-through" }}>
+                        {productPrice} PLN
+                      </span>
+
+                      <ProductFreeDelivery>
+                        {discountedProductPrice} PLN
+                      </ProductFreeDelivery>
+
+                      {/* <ProductFreeDelivery>- 10% delivery</ProductFreeDelivery> */}
                     </ProductPrice>
                   ) : (
                     <ProductPrice>{productPrice} PLN</ProductPrice>

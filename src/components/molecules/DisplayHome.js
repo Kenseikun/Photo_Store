@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Button from "../atoms/Button";
 import { Link } from "react-router-dom";
 import { routes } from "../../routes";
+import { productTypes } from "../../utils/productTypes";
 
 const DisplayHomeWrapper = styled.div`
   display: flex;
@@ -39,27 +40,55 @@ const DisplayHome = () => {
         Just click the button below!
       </DisplayHomeDescription>
       <DisplayButtonsWrapper>
-        <Link to={routes.products}>
-          <Button type={"cameras"} inHome>
-            Cameras
+        <Link
+          to={{
+            pathname: routes.products,
+            state: {
+              type: productTypes.cameras,
+            },
+          }}
+        >
+          <Button type={productTypes.cameras} inHome>
+            {productTypes.cameras}
           </Button>
         </Link>
 
-        <Link to={routes.products}>
-          <Button type={"lenses"} inHome>
-            Lenses
+        <Link
+          to={{
+            pathname: routes.products,
+            state: {
+              type: productTypes.lenses,
+            },
+          }}
+        >
+          <Button type={productTypes.lenses} inHome>
+            {productTypes.lenses}
           </Button>
         </Link>
 
-        <Link to={routes.products}>
-          <Button type={"speedlights"} inHome>
-            Speedlights
+        <Link
+          to={{
+            pathname: routes.products,
+            state: {
+              type: productTypes.speedlights,
+            },
+          }}
+        >
+          <Button type={productTypes.speedlights} inHome>
+            {productTypes.speedlights}
           </Button>
         </Link>
 
-        <Link to={routes.products}>
-          <Button type={""} inHome>
-            All
+        <Link
+          to={{
+            pathname: routes.products,
+            state: {
+              type: productTypes.all,
+            },
+          }}
+        >
+          <Button type="" inHome>
+            {productTypes.all}
           </Button>
         </Link>
       </DisplayButtonsWrapper>

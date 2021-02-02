@@ -40,6 +40,7 @@ const StyledButton = styled.button`
       font-weight: 100;
       height: 80px;
       width: 250px;
+      text-transform: capitalize;
       &:hover {
         opacity: 0.8;
       }

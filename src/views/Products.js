@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Category from "../components/atoms/Category";
 
 import FilteringProducts from "../components/molecules/FilteringProducts";
+import { productTypes } from "../utils/productTypes";
 
 const DIVproductsWrapper = styled.div`
   display: flex;
@@ -16,17 +17,43 @@ const DIVFilteringProductsWrapper = styled.div`
   justify-content: center;
 `;
 
-const Products = () => {
+const Products = (props) => {
   const context = useContext(RootContext);
-  const { category } = context;
+  const { products } = context;
+
+  const { type } = props.location.state;
+  let productsFilteredByType = [...products];
+  switch (type) {
+    case productTypes.cameras:
+      productsFilteredByType = productsFilteredByType.filter(
+        (product) => product.productCategory === productTypes.cameras
+      );
+      break;
+    case productTypes.lenses:
+      productsFilteredByType = productsFilteredByType.filter(
+        (product) => product.productCategory === productTypes.lenses
+      );
+      break;
+    case productTypes.speedlights:
+      productsFilteredByType = productsFilteredByType.filter(
+        (product) => product.productCategory === productTypes.speedlights
+      );
+      break;
+
+    default:
+      productsFilteredByType = [...products];
+  }
+
   return (
     <>
-      <DIVFilteringProductsWrapper>
-        <FilteringProducts />
-      </DIVFilteringProductsWrapper>
+      {type === "all" ? (
+        <DIVFilteringProductsWrapper>
+          <FilteringProducts />
+        </DIVFilteringProductsWrapper>
+      ) : null}
       <DIVproductsWrapper>
-        <ProductsList />
-        <Category>{category}</Category>
+        <ProductsList products={productsFilteredByType} />
+        <Category>{type}</Category>
       </DIVproductsWrapper>
     </>
   );

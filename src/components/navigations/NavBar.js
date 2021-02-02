@@ -57,7 +57,15 @@ const NavBar = () => {
           </NavLink>
         </DisplayLi>
         <DisplayLi>
-          <NavLink to={routes.products} activeStyle={activeNavLinkStyle}>
+          <NavLink
+            to={{
+              pathname: routes.products,
+              state: {
+                type: "all",
+              },
+            }}
+            activeStyle={activeNavLinkStyle}
+          >
             Products
           </NavLink>
         </DisplayLi>

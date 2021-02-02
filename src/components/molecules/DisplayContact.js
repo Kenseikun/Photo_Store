@@ -8,6 +8,7 @@ import SocialMedias from "../atoms/SocialMedias";
 import GoogleMap from "../GoogleMap";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import emailjs from "emailjs-com";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,7 +45,7 @@ const DIVFormWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.violet};
 `;
 
-const StyledForm = styled(Form)`
+const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,6 +73,21 @@ const contactValidationSchema = Yup.object().shape({
 
 const DisplayContact = () => {
   const classes = useStyles();
+
+  const handleEmailSend = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        `${process.env.REACT_APP_EMAILJS_ID}`,
+        `${process.env.REACT_APP_EMAILJS_TEMP}`,
+        e.target,
+        `${process.env.REACT_APP_EMAILJS_USER}`
+      )
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
       <DIVContactWrapper>
@@ -96,7 +112,7 @@ const DisplayContact = () => {
             }}
           >
             {({ values, handleChange }) => (
-              <StyledForm>
+              <StyledForm onSubmit={handleEmailSend}>
                 <Input
                   placeholder="Full name"
                   type="text"

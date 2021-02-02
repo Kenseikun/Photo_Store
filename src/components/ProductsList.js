@@ -1,11 +1,7 @@
-import React, { useContext } from "react";
-import RootContext from "../context";
+import React from "react";
 import DisplayProduct from "./molecules/DisplayProduct";
 
-const ProductsList = () => {
-  const context = useContext(RootContext);
-  const { products } = context;
-
+const ProductsList = ({ products }) => {
   return (
     <ul>
       {products.map((product) => {

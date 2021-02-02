@@ -49,15 +49,33 @@ const Root = () => {
   };
 
   const handleAddProductToCart = (productId) => {
-    const filteredProduct = products.find((product) => {
+    let filteredProduct = products.find((product) => {
       return product.productId === productId;
     });
-    if (filteredProduct.freeDelivery === true) {
-      let deliveryValue = filteredProduct.productPrice * 0.1;
-      filteredProduct.productPrice -= deliveryValue;
+
+    if (filteredProduct.freeDelivery) {
+      const discountedProductPrice =
+        filteredProduct.productPrice - filteredProduct.productPrice * 0.1;
+      filteredProduct = {
+        ...filteredProduct,
+        discountedProductPrice,
+      };
     }
+
+    let isProductAlreadyInCart;
+
+    cart.forEach((product) => {
+      if (product.productId === productId) {
+        isProductAlreadyInCart = true;
+      }
+    });
+
     increaseProductsInCartQuantity();
-    setCart([...new Set([...cart, filteredProduct])]);
+    if (isProductAlreadyInCart) {
+      setCart([...new Set([...cart])]);
+    } else {
+      setCart([...new Set([...cart, filteredProduct])]);
+    }
   };
 
   const handleDuplicatesInCart = (productId) => {
@@ -75,11 +93,15 @@ const Root = () => {
     let tempCartTotalPrice = 0;
 
     cart.forEach((product) => {
-      return (tempCartTotalPrice +=
-        product.productPrice * product.productQuantity);
+      if (product.freeDelivery) {
+        tempCartTotalPrice +=
+          product.discountedProductPrice * product.productQuantity;
+      } else {
+        tempCartTotalPrice += product.productPrice * product.productQuantity;
+      }
     });
 
-    setCartTotalPrice(tempCartTotalPrice);
+    setCartTotalPrice(Math.floor(tempCartTotalPrice));
   };
 
   useEffect(() => {
@@ -316,6 +338,32 @@ const Root = () => {
   useEffect(() => {
     filterProductsInPopper();
   }, [popperInputSearchValue]);
+
+  // TODO:
+
+  const calculateFreeDeliveryProductPrice = () => {
+    const mappedCart = cart.map((product) => {
+      if (product.freeDelivery === true) {
+        // let deliveryValue = product.productPrice * 0.1;
+        // product.productPrice -= deliveryValue;
+
+        const discountedProductPrice =
+          product.productPrice - product.productPrice * 0.1;
+
+        product = {
+          ...product,
+          discountedProductPrice,
+        };
+      }
+      return product;
+    });
+    // setCart([...mappedCart]);
+  };
+
+  useEffect(() => {
+    // calculateFreeDeliveryProductPrice();
+  }, [cart]);
+  // TODO:
 
   return (
     <>

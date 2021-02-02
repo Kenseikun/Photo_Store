@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { productTypes } from "../../utils/productTypes";
 
 const DIVcategoryWrapper = styled.div``;
 const DIVcategorySign = styled.div`
@@ -13,8 +14,14 @@ const DIVcategorySign = styled.div`
   font-family: ${({ theme }) => theme.fontFamily.main};
   font-weight: 300;
   font-size: 1.3em;
-  background-color: ${({ inContact, theme }) =>
-    inContact ? theme.colors.blue : theme.colors.violet};
+  background-color: ${({ type, theme }) =>
+    productTypes.cameras === type
+      ? theme.colors.red
+      : productTypes.lenses === type
+      ? theme.colors.yellow
+      : productTypes.speedlights === type
+      ? theme.colors.blue
+      : theme.colors.violet};
 
   ${({ inContact }) =>
     inContact &&
@@ -22,6 +29,7 @@ const DIVcategorySign = styled.div`
       position: absolute;
       top: 10px;
       right: 0;
+      background-color: ${({ theme }) => theme.colors.blue};
     `}
 
   ${({ inAbout }) =>
@@ -37,7 +45,7 @@ const DIVcategorySign = styled.div`
 const Category = ({ children, inContact, inAbout }) => {
   return (
     <DIVcategoryWrapper>
-      <DIVcategorySign inContact={inContact} inAbout={inAbout}>
+      <DIVcategorySign inContact={inContact} inAbout={inAbout} type={children}>
         {children}
       </DIVcategorySign>
     </DIVcategoryWrapper>
