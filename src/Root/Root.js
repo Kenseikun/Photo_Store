@@ -11,15 +11,21 @@ import { routes } from "../routes";
 
 import Test from "../Test";
 import MainTemplate from "../templates/MainTemplate";
+import {
+  getCartFromLocalStorage,
+  getProductsCounterFromLocalStorage,
+} from "../utils/localStorageGetters";
 
 const Root = () => {
   const [initialProducts, setInitialProducts] = useState([...localData]);
   const [products, setProducts] = useState([...localData]);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(getCartFromLocalStorage());
   const [filteredCart, setFilteredCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
-  const [productsInCartQuantity, setProductsInCartQuantity] = useState(0);
+  const [productsInCartQuantity, setProductsInCartQuantity] = useState(
+    getProductsCounterFromLocalStorage()
+  );
   const [category, setCategory] = useState("all");
 
   const [freeDeliveryCheckbox, setFreeDeliveryCheckbox] = useState(false);
@@ -31,6 +37,22 @@ const Root = () => {
   const [popperInputSearchValue, setPopperInputSearchValue] = useState("");
   const [isPopperOpen, setIsPopperOpen] = useState(false);
   const [popperProducts, setPopperProducts] = useState([]);
+
+  const setCartToLocalStorage = () => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+  useEffect(() => {
+    setCartToLocalStorage();
+  }, [cart]);
+
+  const setProductsCounterToLocalStorage = () => {
+    localStorage.setItem("counter", JSON.stringify(productsInCartQuantity));
+  };
+
+  useEffect(() => {
+    setProductsCounterToLocalStorage();
+  }, [productsInCartQuantity]);
 
   const increaseProductsInCartQuantity = () => {
     setProductsInCartQuantity(productsInCartQuantity + 1);
@@ -323,16 +345,18 @@ const Root = () => {
   }, [popperInputSearchValue]);
 
   const filterProductsInPopper = () => {
-    const filteredProducts = initialProducts.filter((product) => {
-      const productName = product.productName.toLowerCase();
-      const popperInputSearchValueLowerCase = popperInputSearchValue.toLowerCase();
-      return (
-        productName.slice(0, popperInputSearchValue.length) ===
-        popperInputSearchValueLowerCase
-      );
-    });
+    if (popperInputSearchValue.length !== 0) {
+      const filteredProducts = initialProducts.filter((product) => {
+        const productName = product.productName.toLowerCase();
+        const popperInputSearchValueLowerCase = popperInputSearchValue.toLowerCase();
+        return (
+          productName.slice(0, popperInputSearchValue.length) ===
+          popperInputSearchValueLowerCase
+        );
+      });
 
-    setPopperProducts([...filteredProducts]);
+      setPopperProducts([...filteredProducts]);
+    }
   };
 
   useEffect(() => {

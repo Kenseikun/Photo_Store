@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button, Input, TextareaAutosize, TextField } from "@material-ui/core";
+import {
+  Button,
+  CircularProgress,
+  Input,
+  TextareaAutosize,
+  TextField,
+} from "@material-ui/core";
 import styled from "styled-components";
 import Category from "../atoms/Category";
 import Logo from "../atoms/Logo";
@@ -45,7 +51,7 @@ const DIVFormWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.violet};
 `;
 
-const StyledForm = styled.form`
+const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,20 +79,21 @@ const contactValidationSchema = Yup.object().shape({
 
 const DisplayContact = () => {
   const classes = useStyles();
+  const [isSubmiting, setIsSubmiting] = useState(false);
 
-  const handleEmailSend = (e) => {
-    e.preventDefault();
+  // const handleEmailSend = (e) => {
+  //   e.preventDefault();
 
-    emailjs
-      .sendForm(
-        `${process.env.REACT_APP_EMAILJS_ID}`,
-        `${process.env.REACT_APP_EMAILJS_TEMP}`,
-        e.target,
-        `${process.env.REACT_APP_EMAILJS_USER}`
-      )
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  };
+  //   emailjs
+  //     .sendForm(
+  //       process.env.REACT_APP_EMAILJS_ID,
+  //       process.env.REACT_APP_EMAILJS_TEMP,
+  //       e.target,
+  //       process.env.REACT_APP_EMAILJS_USER
+  //     )
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+  // };
 
   return (
     <>
@@ -107,12 +114,28 @@ const DisplayContact = () => {
               message: "",
             }}
             validationSchema={contactValidationSchema}
-            onSubmit={(values) => {
+            onSubmit={(values, { resetForm }) => {
+              setIsSubmiting(true);
               console.log(values);
+
+              emailjs
+                .send(
+                  process.env.REACT_APP_EMAILJS_ID,
+                  process.env.REACT_APP_EMAILJS_TEMP,
+                  values,
+                  process.env.REACT_APP_EMAILJS_USER
+                )
+                .then((res) => {
+                  console.log(res.text);
+                  setIsSubmiting(false);
+                })
+                .catch((err) => console.log(err));
+
+              resetForm();
             }}
           >
             {({ values, handleChange }) => (
-              <StyledForm onSubmit={handleEmailSend}>
+              <StyledForm>
                 <Input
                   placeholder="Full name"
                   type="text"
@@ -149,10 +172,13 @@ const DisplayContact = () => {
                   onChange={handleChange}
                 />
                 <ErrorMessage name="message" />
-
-                <Button variant="contained" color="primary" type="submit">
-                  Send
-                </Button>
+                {isSubmiting ? (
+                  <CircularProgress color="secondary" />
+                ) : (
+                  <Button variant="contained" color="primary" type="submit">
+                    Send
+                  </Button>
+                )}
               </StyledForm>
             )}
           </Formik>
