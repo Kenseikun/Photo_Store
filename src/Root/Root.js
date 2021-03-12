@@ -233,6 +233,7 @@ const Root = () => {
     tempProducts = tempProducts.filter(
       (product) => product.productPrice <= filteredPrice
     );
+
     if (productSearchValue.length !== 0) {
       tempProducts = tempProducts.filter((product) => {
         const productName = product.productName.toLowerCase();
